@@ -5,6 +5,8 @@ title: Home
 
 # Akihiro Miki
 
+<img src="images/profile.jpg" alt="Profile Photo" style="float: right; width: 200px; margin: 0 0 20px 20px; border-radius: 8px;">
+
 Project Assistant Professor / Researcher
 JSK Robotics Lab, The University of Tokyo
 
