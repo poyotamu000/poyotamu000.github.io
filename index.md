@@ -3,26 +3,26 @@ layout: default
 title: Home
 ---
 
-# Your Name
+# Akihiro Miki
 
-Graduate Student / Researcher
-Your Lab, Your University
+Project Assistant Professor / Researcher
+JSK Robotics Lab, The University of Tokyo
 
-I am interested in robotics, tactile sensing, and bio-inspired skin systems.
+
 
 [GitHub](https://github.com/poyotamu000)
 [Google Scholar](#)
-[Email](mailto:your@email)
+[Email](mailto:miki@jsk.imi.i.u-tokyo.ac.jp)
 
 ---
 
 ## Research Keywords
 
 - Robotics
-- Tactile Sensing
-- Bio-inspired Skin
-- Haptics
-- Embodied Perception
+- Biomimetics
+- Neuroscience
+- Physiology
+- Embodied Intelligence
 
 ---
 
@@ -40,4 +40,4 @@ I am interested in robotics, tactile sensing, and bio-inspired skin systems.
 
 ## Contact
 
-your@email
+miki@jsk.imi.i.u-tokyo.ac.jp
