@@ -13,6 +13,8 @@ cv:
       username: poyotamu000
     - network: LinkedIn
       username: akihiro-miki-18641829b
+    - network: Google Scholar
+      username: Ce6GqwEAAAAJ
 
   address:
     street: "JSK Robotics laboratory, Dept. of Mechano-Informatics, Room.73B1, Engineering Building No. 2, 7-3-1"
@@ -99,20 +101,34 @@ cv:
     #       - "Men of the year 2014 by Time magazine"
 
     Awards:
-      - title: Nobel Prize in Physics
+      - title: Valedictorian (Graduation Ceremony Representative)
         authors:
-          - "Royal Swedish Academy of Sciences"
-        date: 1921-11-01
-        awarder: Royal Swedish Academy of Sciences
-        url: https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/
-        summary: The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'
-
-      - title: Max Planck Medal
+          - Akihiro Miki
+        date: 2026-3-24
+        awarder: The University of Tokyo
+        url: https://www.u-tokyo.ac.jp/focus/en/articles/z1301_00062.html
+        summary: Selected to deliver the commencement address on behalf of graduating students.
+      - title: in Japanese, 2024年度計測自動制御学会 学術奨励賞
         authors:
-          - "German Physical Society"
-        date: 2029
-        awarder: German Physical Society
-        summary: Awarded for outstanding scientific achievement
+          - "三木章寛"
+        date: 2025-3-18
+        awarder: 計測自動制御学会
+        url: https://www.sice.jp/info/info_press/press_20250512-2.html
+        summary: 人の関節潤滑機能を模した人体模倣ロボットの液体滲出軟骨機構の構成法
+      - title: in Japanese, 第24回計測自動制御学会システムインテグレーション部門講演会 優秀講演賞
+        authors:
+          - "三木章寛"
+        date: 2024-1-23
+        awarder: 計測自動制御学会
+        url: https://sice-si.org/si2023/
+        summary: 人の関節潤滑機能を模した人体模倣ロボットの液体滲出軟骨機構の構成法
+      - title: in Japanese, 第3回ロボティクスシンポジア優秀研究・技術賞
+        authors:
+          - "三木章寛, 永松祐弥，河原塚健人，平岡直樹，岡田慧，稲葉雅幸"
+        date: 2023-9-13
+        awarder: 日本ロボット学会
+        url: https://www.rsj.or.jp/info/awards/category/ykg_rs/
+        summary: 高応答性を備え多様なロボットの扱いを可能とするハードウェア抽象化デバイス制御プラットフォーム開発
 
     Publications:
       - title: Zur Elektrodynamik bewegter Körper
