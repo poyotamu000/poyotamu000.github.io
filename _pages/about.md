@@ -2,8 +2,6 @@
 layout: about
 title: about
 permalink: /
-nav: true
-nav_order: 1
 subtitle: Project Assistant Professor, JSK Robotics Lab, The University of Tokyo
 
 profile:
