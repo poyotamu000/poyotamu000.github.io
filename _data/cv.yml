@@ -131,29 +131,63 @@ cv:
         summary: 高応答性を備え多様なロボットの扱いを可能とするハードウェア抽象化デバイス制御プラットフォーム開発
 
     Publications:
-      - title: Zur Elektrodynamik bewegter Körper
+      - title: Exploring the proprioceptive potential of joint receptors using a biomimetic robotic joint
         authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1905-06-30
-        url: https://en.wikisource.org/wiki/Translation:On_the_Electrodynamics_of_Moving_Bodies
-        summary: It concerned an interpretation of the Michelson–Morley experiment and the properties of light and time. Special relativity incorporates the principle that the speed of light is the same for all inertial observers regardless of the state of motion of the source.
+          - Akihiro Miki
+          - Shun Hasegawa
+          - Sota Yuzaki
+          - Yuta Sahara
+          - Yoshimoto Ribayashi
+          - Kento Kawaharazuka
+          - Kei Okada
+        publisher: Scientific Reports | Vol. 16, No. 1, pp. 4724
+        releaseDate: 2026
+        url: https://doi.org/10.1038/s41598-025-27311-3
+        summary: "Category: Biological Understanding via Robotics | Abstract: This study builds a biomimetic robotic joint to evaluate how joint receptor arrangements can encode proprioceptive signals and contribute to constructive understanding of biological sensing mechanisms."
 
-      - title: Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt
+      - title: Development of a Hardware-abstracted Device Control Platform that Enables Handling of a Variety of Robots while Providing High Responsivity
         authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1905-03-18
-        url: https://de.wikisource.org/wiki/Über_einen_die_Erzeugung_und_Verwandlung_des_Lichtes_betreffenden_heuristischen_Gesichtspunkt
-        summary: In the second paper, he applied the quantum theory to light to explain the photoelectric effect. In particular, he used the idea of light quanta (photons) to explain experimental results, but stressed the importance of the experimental results. The importance of his work on the photoelectric effect earned him the Nobel Prize in Physics in 1921.
+          - Akihiro Miki
+          - Yuya Nagamatsu
+          - Masahiro Bando
+          - Kento Kawaharazuka
+          - Yasunori Toshimitsu
+          - Naoki Hiraoka
+          - Kei Okada
+          - Masayuki Inaba
+        publisher: Journal of the Robotics Society of Japan | Vol. 43, No. 1, pp. 75-86
+        releaseDate: 2025
+        url: https://doi.org/10.7210/jrsj.43.75
+        summary: "Category: Robot Systems | Abstract: This paper presents a high-responsivity hardware-abstracted device-control platform that standardizes heterogeneous robot hardware interfaces and enables robust operation across diverse robotic systems."
 
-      - title: Die Grundlage der allgemeinen Relativitätstheorie
+      - title: Designing Fluid-Exuding Cartilage for Biomimetic Robots Mimicking Human Joint Lubrication Function
         authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1916-03-20
-        url: https://de.wikisource.org/wiki/Die_Grundlage_der_allgemeinen_Relativitätstheorie
-        summary: The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914).
+          - Akihiro Miki
+          - Yuta Sahara
+          - Kazuhiro Miyama
+          - Shunnosuke Yoshimura
+          - Yoshimoto Ribayashi
+          - Kento Kawaharazuka
+          - Shun Hasegawa
+          - Kei Okada
+          - Masayuki Inaba
+        publisher: Proceedings of the 2024 IEEE-RAS International Conference on Soft Robotics | pp. 452-459
+        releaseDate: 2024
+        url: https://doi.org/10.1109/robosoft60065.2024.10521920
+        summary: "Category: Biomimetics | Abstract: We propose and validate a fluid-exuding artificial cartilage structure that reproduces key human joint lubrication behavior, improving durability and biomimetics functionality in robotic joint systems."
+
+      - title: System Architecture and Real-World Task Realization of Musculoskeletal Wheeled Robot Musashi-W with Various Hardware Components
+        authors:
+          - Akihiro Miki
+          - Kento Kawaharazuka
+          - Masahiro Bando
+          - Kei Okada
+          - Koji Kawasaki
+          - Masayuki Inaba
+        publisher: Intelligent Autonomous Systems 18 | pp. 109-122
+        releaseDate: 2024
+        url: https://doi.org/10.1007/978-3-031-44851-5_9
+        summary: "Category: Musculoskeletal Systems | Abstract: This work details the system architecture of the Musashi-W musculoskeletal wheeled robot and demonstrates integration of multiple hardware components for stable real-world task execution."
 
     Skills:
       - name: Robotics
