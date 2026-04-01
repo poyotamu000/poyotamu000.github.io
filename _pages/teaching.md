@@ -2,14 +2,17 @@
 layout: page
 permalink: /teaching/
 title: teaching
-description: Course materials, schedules, and resources for classes taught.
+description: Educational experience and teaching activities.
 nav: true
 nav_order: 4
-calendar: true
 ---
 
-This page displays a collection of courses with detailed schedules, materials, and resources. You can organize your courses by years, terms, or topics.
+## Educational Experience
 
-{% include calendar.liquid calendar_id='test@gmail.com' timezone='Asia/Shanghai' %}
+### 2026
 
-{% include courses.liquid %}
+- Instructor (Undergraduate Course), _Architecture of Intelligent Machinery_ (Spring Term), Department of Information Science and Technology (in Japanese 知能機械構成論)
+
+### 2022
+
+- Teaching Assistant (Graduate Course), _Robot Systems Exercise_ (Winter Term), Department of Mechano-Informatics (in Japanese 機械情報工学科 冬学期演習 ロボットシステム演習 TA)
