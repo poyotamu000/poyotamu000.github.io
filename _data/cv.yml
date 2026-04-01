@@ -31,8 +31,8 @@ cv:
         start_date: 2023-4-01
         end_date: 2026-3-31
         highlights:
-          - PhD in Graduate School of Information Science and Technology
-          - Dissertation: "A Cross-Hierarchical Constructive Framework for Biological Understanding Based on Reproducing Emergent Functional Processes via Biomimetic Tissue Robotics"
+          - "PhD in Graduate School of Information Science and Technology"
+          - "Dissertation: A Cross-Hierarchical Constructive Framework for Biological Understanding Based on Reproducing Emergent Functional Processes via Biomimetic Tissue Robotics"
       - institution: The University of Tokyo
         location: Tokyo, Japan
         url: https://www.iii.u-tokyo.ac.jp/
