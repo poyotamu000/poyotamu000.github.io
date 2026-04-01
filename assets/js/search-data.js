@@ -511,35 +511,35 @@ ninja.data = [{
         title: 'email',
         section: 'Socials',
         handler: () => {
-          window.open("mailto:%6D%69%6B%69@%6A%73%6B.%69%6D%69.%69.%75-%74%6F%6B%79%6F.%61%63.%6A%70", "_blank");
+          window.open("mailto:{"%76%61%6C%75%65"=>"%6D%69%6B%69@%6A%73%6B.%69%6D%69.%69.%75-%74%6F%6B%79%6F.%61%63.%6A%70", "%6C%6F%67%6F"=>"%66%61-%73%6F%6C%69%64 %66%61-%65%6E%76%65%6C%6F%70%65"}", "_blank");
         },
       },{
         id: 'social-scholar',
         title: 'Google Scholar',
         section: 'Socials',
         handler: () => {
-          window.open("https://scholar.google.com/citations?user=Ce6GqwEAAAAJ", "_blank");
+          window.open("https://scholar.google.com/citations?user={"value"=>"Ce6GqwEAAAAJ", "logo"=>"ai ai-google-scholar"}", "_blank");
         },
       },{
         id: 'social-x',
         title: 'X',
         section: 'Socials',
         handler: () => {
-          window.open("https://twitter.com/Aki_Miki_2401", "_blank");
+          window.open("https://twitter.com/{"value"=>"Aki_Miki_2401", "logo"=>"fa-brands fa-x-twitter"}", "_blank");
         },
       },{
         id: 'social-github',
         title: 'GitHub',
         section: 'Socials',
         handler: () => {
-          window.open("https://github.com/poyotamu000", "_blank");
+          window.open("https://github.com/{"value"=>"poyotamu000", "logo"=>"fa-brands fa-github"}", "_blank");
         },
       },{
         id: 'social-linkedin',
         title: 'LinkedIn',
         section: 'Socials',
         handler: () => {
-          window.open("https://www.linkedin.com/in/akihiro-miki-18641829b", "_blank");
+          window.open("https://www.linkedin.com/in/{"value"=>"akihiro-miki-18641829b", "logo"=>"fa-brands fa-linkedin"}", "_blank");
         },
       },{
       id: 'light-theme',
