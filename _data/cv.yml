@@ -1,7 +1,7 @@
 cv:
   name: Akihiro Miki
   headline: Project Assistant Professor
-  photo: /assets/img/prof_pic.jpg
+  photo: ../assets/img/prof_pic.jpg
   email: miki@jsk.imi.i.u-tokyo.ac.jp
   location: JSK Robotics laboratory, Dept. of Mechano-Informatics, Room 73B1, Engineering Building No. 2, 7-3-1, Hongo, Bunkyo-ku, Tokyo 113-8656, Japan
 
