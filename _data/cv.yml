@@ -16,7 +16,13 @@ cv:
     - network: Google Scholar
       username: Ce6GqwEAAAAJ
 
-  address: "JSK Robotics laboratory, Dept. of Mechano-Informatics, Room 73B1, Engineering Building No. 2, 7-3-1, Hongo, Bunkyo-ku, Tokyo 113-8656, Japan"
+  # address: "JSK Robotics laboratory, Dept. of Mechano-Informatics, Room 73B1, Engineering Building No. 2, 7-3-1, Hongo, Bunkyo-ku, Tokyo 113-8656, Japan"
+  address:
+    street: JSK Robotics laboratory, Dept. of Mechano-Informatics, Room 73B1, Engineering Building No. 2, 7-3-1
+    city: Hongo, Bunkyo-ku
+    region: Tokyo
+    postalCode: 113-8656
+    countryCode: JP
 
   sections:
     Education:
