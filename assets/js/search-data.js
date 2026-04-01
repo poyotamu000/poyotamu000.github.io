@@ -440,18 +440,18 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-publication-in-scientific-reports",
-          title: 'Publication in Scientific Reports',
+            },},{id: "news-our-paper-quot-exploring-the-proprioceptive-potential-of-joint-receptors-using-a-biomimetic-robotic-joint-quot-has-been-published-in-scientific-reports",
+          title: 'Our paper *&amp;quot;Exploring the proprioceptive potential of joint receptors using a biomimetic robotic...',
           description: "",
           section: "News",handler: () => {
               window.location.href = "/news/announcement_3/";
-            },},{id: "news-ph-d-in-information-science-and-technology",
-          title: 'Ph.D. in Information Science and Technology',
+            },},{id: "news-i-received-my-ph-d-in-information-science-and-technology-from-the-university-of-tokyo-and-was-selected-as-a-representative-graduate-delivering-a-speech-at-the-commencement-ceremony",
+          title: 'I received my Ph.D. in Information Science and Technology from The University of...',
           description: "",
           section: "News",handler: () => {
               window.location.href = "/news/announcement_2/";
-            },},{id: "news-appointed-as-project-assistant-professor",
-          title: 'Appointed as Project Assistant Professor',
+            },},{id: "news-i-have-been-appointed-as-a-project-assistant-professor-in-the-department-of-information-science-and-technology-the-university-of-tokyo-affiliated-with-the-creative-informatics",
+          title: 'I have been appointed as a Project Assistant Professor in the Department of...',
           description: "",
           section: "News",handler: () => {
               window.location.href = "/news/announcement_1/";
