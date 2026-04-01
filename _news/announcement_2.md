@@ -1,10 +1,12 @@
 ---
 layout: post
-title: I received my Ph.D. in Information Science and Technology from The University of Tokyo and was selected as a representative graduate, delivering a speech at the commencement ceremony.
+title: "Ph.D. awarded"
 date: 2026-03-24
 inline: true
 related_posts: false
 ---
+
+I received my Ph.D. in Information Science and Technology from The University of Tokyo. I was also selected as a representative graduate and delivered a speech at the commencement ceremony.
 
 <!--
 

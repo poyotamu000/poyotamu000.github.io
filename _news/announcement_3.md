@@ -5,3 +5,5 @@ date: 2026-02-03
 inline: true
 related_posts: false
 ---
+
+Our paper on the proprioceptive potential of joint receptors has been published in *Scientific Reports*.
