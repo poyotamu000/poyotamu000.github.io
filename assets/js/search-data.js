@@ -440,22 +440,16 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-our-paper-quot-exploring-the-proprioceptive-potential-of-joint-receptors-using-a-biomimetic-robotic-joint-quot-has-been-published-in-scientific-reports",
-          title: 'Our paper *&amp;quot;Exploring the proprioceptive potential of joint receptors using a biomimetic robotic...',
+            },},{id: "news-",
+          title: '',
           description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/announcement_3/";
-            },},{id: "news-i-received-my-ph-d-in-information-science-and-technology-from-the-university-of-tokyo-and-was-selected-as-a-representative-graduate-delivering-a-speech-at-the-commencement-ceremony",
-          title: 'I received my Ph.D. in Information Science and Technology from The University of...',
+          section: "News",},{id: "news-amp-lt-layout-post-title-a-long-announcement-with-details-date-2015-11-07-16-11-00-0400-inline-false-related-posts-false-announcements-and-news-can-be-much-longer-than-just-quick-inline-posts-in-fact-they-can-have-all-the-features-available-for-the-standard-blog-posts-see-below-jean-shorts-raw-denim-vice-normcore-art-party-high-life-pbr-skateboard-stumptown-vinyl-kitsch-four-loko-meh-8-bit-tousled-banh-mi-tilde-forage-schlitz-dreamcatcher-twee-3-wolf-moon-chambray-asymmetrical-paleo-salvia-sartorial-umami-four-loko-master-cleanse-drinking-vinegar-brunch-pinterest-diy-authentic-schlitz-hoodie-intelligentsia-butcher-trust-fund-brunch-shabby-chic-kickstarter-forage-flexitarian-direct-trade-cold-pressed-meggings-stumptown-plaid-pop-up-taxidermy-hoodie-xoxo-fingerstache-scenester-echo-park-plaid-ugh-wes-anderson-freegan-pug-selvage-fanny-pack-leggings-pickled-food-truck-diy-irony-banksy-hipster-list-brunch-fixie-raybans-messenger-bag-hoodie-thundercats-retro-tote-bag-8-bit-godard-craft-beer-gastropub-truffaut-tumblr-taxidermy-raw-denim-kickstarter-sartorial-dreamcatcher-quinoa-chambray-slow-carb-salvia-readymade-bicycle-rights-90-s-yr-typewriter-selfies-letterpress-cardigan-vegan-pug-heirloom-high-life-vinyl-swag-single-origin-coffee-four-dollar-toast-taxidermy-reprehenderit-fap-distillery-master-cleanse-locavore-est-anim-sapiente-leggings-brooklyn-ea-thundercats-locavore-excepteur-veniam-eiusmod-raw-denim-truffaut-schlitz-migas-sapiente-portland-vhs-twee-bushwick-marfa-typewriter-retro-id-keytar-we-do-not-grow-absolutely-chronologically-we-grow-sometimes-in-one-dimension-and-not-in-another-unevenly-we-grow-partially-we-are-relative-we-are-mature-in-one-realm-childish-in-another-anais-nin-fap-aliqua-qui-scenester-pug-echo-park-polaroid-irony-shabby-chic-ex-cardigan-church-key-odd-future-accusamus-blog-stumptown-sartorial-squid-gastropub-duis-aesthetic-truffaut-vero-pinterest-tilde-twee-odio-mumblecore-jean-shorts-lumbersexual-amp-gt",
+          title: '&amp;amp;lt;!– layout: post title: A long announcement with details date: 2015-11-07 16:11:00-0400 inline:...',
           description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/announcement_2/";
-            },},{id: "news-i-have-been-appointed-as-a-project-assistant-professor-in-the-department-of-information-science-and-technology-the-university-of-tokyo-affiliated-with-the-creative-informatics",
-          title: 'I have been appointed as a Project Assistant Professor in the Department of...',
+          section: "News",},{id: "news-",
+          title: '',
           description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/announcement_1/";
-            },},{id: "projects-project-1",
+          section: "News",},{id: "projects-project-1",
           title: 'project 1',
           description: "with background image",
           section: "Projects",handler: () => {
