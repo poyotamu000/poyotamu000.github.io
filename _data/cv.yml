@@ -29,7 +29,7 @@ cv:
         location: Tokyo, Japan
         url: https://www.i.u-tokyo.ac.jp/
         area: Mechano-Informatics
-        studyType: PhD
+        degree: PhD
         start_date: 2023-4-01
         end_date: 2026-3-31
         highlights:
@@ -39,7 +39,7 @@ cv:
         location: Tokyo, Japan
         url: https://www.iii.u-tokyo.ac.jp/
         area: Interdisciplinary Information Studies
-        studyType: Master
+        degree: Master
         start_date: 2021-4-01
         end_date: 2023-3-31
         highlights:
@@ -48,7 +48,7 @@ cv:
         location: Tokyo, Japan
         url: https://www.t.u-tokyo.ac.jp/
         area: Mechano-Informatics
-        studyType: Bachelor
+        degree: Bachelor
         start_date: 2017-4-01
         end_date: 2021-3-31
         highlights:
@@ -57,7 +57,7 @@ cv:
         location: Ehime, Japan
         url: https://www.m.ehime-u.ac.jp/medical/
         area: Medicine
-        studyType: M.D. Program (withdrawn)
+        degree: M.D. Program (withdrawn)
         end_date: 2017-3-31
 
     Experience:
@@ -140,8 +140,8 @@ cv:
           - Yoshimoto Ribayashi
           - Kento Kawaharazuka
           - Kei Okada
-        publisher: Scientific Reports | Vol. 16, No. 1, pp. 4724
-        releaseDate: 2026
+        journal: Scientific Reports | Vol. 16, No. 1, pp. 4724
+        date: 2026
         url: https://doi.org/10.1038/s41598-025-27311-3
         summary: "Category: Biological Understanding via Robotics | Abstract: This study builds a biomimetic robotic joint to evaluate how joint receptor arrangements can encode proprioceptive signals and contribute to constructive understanding of biological sensing mechanisms."
 
@@ -155,8 +155,8 @@ cv:
           - Naoki Hiraoka
           - Kei Okada
           - Masayuki Inaba
-        publisher: Journal of the Robotics Society of Japan | Vol. 43, No. 1, pp. 75-86
-        releaseDate: 2025
+        journal: Journal of the Robotics Society of Japan | Vol. 43, No. 1, pp. 75-86
+        date: 2025
         url: https://doi.org/10.7210/jrsj.43.75
         summary: "Category: Robot Systems | Abstract: This paper presents a high-responsivity hardware-abstracted device-control platform that standardizes heterogeneous robot hardware interfaces and enables robust operation across diverse robotic systems."
 
@@ -171,8 +171,8 @@ cv:
           - Shun Hasegawa
           - Kei Okada
           - Masayuki Inaba
-        publisher: Proceedings of the 2024 IEEE-RAS International Conference on Soft Robotics | pp. 452-459
-        releaseDate: 2024
+        journal: Proceedings of the 2024 IEEE-RAS International Conference on Soft Robotics | pp. 452-459
+        date: 2024
         url: https://doi.org/10.1109/robosoft60065.2024.10521920
         summary: "Category: Biomimetics | Abstract: We propose and validate a fluid-exuding artificial cartilage structure that reproduces key human joint lubrication behavior, improving durability and biomimetics functionality in robotic joint systems."
 
@@ -184,8 +184,8 @@ cv:
           - Kei Okada
           - Koji Kawasaki
           - Masayuki Inaba
-        publisher: Intelligent Autonomous Systems 18 | pp. 109-122
-        releaseDate: 2024
+        journal: Intelligent Autonomous Systems 18 | pp. 109-122
+        date: 2024
         url: https://doi.org/10.1007/978-3-031-44851-5_9
         summary: "Category: Musculoskeletal Systems | Abstract: This work details the system architecture of the Musashi-W musculoskeletal wheeled robot and demonstrates integration of multiple hardware components for stable real-world task execution."
 
