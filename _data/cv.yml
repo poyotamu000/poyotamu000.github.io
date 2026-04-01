@@ -31,8 +31,8 @@ cv:
         url: https://www.i.u-tokyo.ac.jp/
         area: Mechano-Informatics
         degree: PhD
-        start_date: 2023-4-01
-        end_date: 2026-3-31
+        start_date: 2023-04-01
+        end_date: 2026-03-31
         highlights:
           - "PhD in Graduate School of Information Science and Technology"
           - "Dissertation: A Cross-Hierarchical Constructive Framework for Biological Understanding Based on Reproducing Emergent Functional Processes via Biomimetic Tissue Robotics"
@@ -41,7 +41,7 @@ cv:
         url: https://www.iii.u-tokyo.ac.jp/
         area: Interdisciplinary Information Studies
         degree: Master
-        start_date: 2021-4-01
+        start_date: 2021-04-01
         end_date: 2023-3-31
         highlights:
           - Completed Master's program at Graduate School of Interdisciplinary Information Studies
@@ -50,8 +50,8 @@ cv:
         url: https://www.t.u-tokyo.ac.jp/
         area: Mechano-Informatics
         degree: Bachelor
-        start_date: 2017-4-01
-        end_date: 2021-3-31
+        start_date: 2017-04-01
+        end_date: 2021-03-31
         highlights:
           - Graduated from Department of Mechano-Informatics, Faculty of Engineering
       - institution: Ehime University
@@ -66,7 +66,7 @@ cv:
         position: Project Assistant Professor
         location: Tokyo, Japan
         url: http://www.jsk.t.u-tokyo.ac.jp/
-        start_date: 2026-4-01
+        start_date: 2026-04-01
         # end_date: 2030
         summary: Working at JSK Robotics Laboratory (Creative Informatics, Information Science and Technology).
         # highlights:
@@ -75,20 +75,20 @@ cv:
       - company: JSPS (Japan Society for the Promotion of Science), (in japanese 日本学術振興会)
         position: JSPS Research Fellowships for young students (DC2)
         location: Tokyo, Japan
-        start_date: 2024-4-01
-        end_date: 2026-3-31
+        start_date: 2024-04-01
+        end_date: 2026-03-31
       - company: Japan Science and Technology Agency (JST)
         position: The University of Tokyo "Advanced Human Resource Development Leading Green Transformation (GX) (SPRING GX)" Project student
         location: Tokyo, Japan
-        start_date: 2023-4-01
-        end_date: 2024-3-31
+        start_date: 2023-04-01
+        end_date: 2024-03-31
         highlights:
           - Description 1. JST Support for Pioneering Research Initiated by the Next Generation (SPRING) Program
       - company: The University of Tokyo
         position: Research Assistant
         location: Tokyo, Japan
-        start_date: 2022-5-01
-        end_date: 2026-3-31
+        start_date: 2022-05-01
+        end_date: 2026-03-31
 
     # Volunteer:
     #   - company: People's Climate March
@@ -105,28 +105,28 @@ cv:
       - title: Valedictorian (Graduation Ceremony Representative)
         authors:
           - Akihiro Miki
-        date: 2026-3-24
+        date: 2026-03-24
         awarder: The University of Tokyo
         url: https://www.u-tokyo.ac.jp/focus/en/articles/z1301_00062.html
         summary: Selected to deliver the commencement address on behalf of graduating students.
       - title: in Japanese, 2024年度計測自動制御学会 学術奨励賞
         authors:
           - "三木章寛"
-        date: 2025-3-18
+        date: 2025-03-18
         awarder: 計測自動制御学会
         url: https://www.sice.jp/info/info_press/press_20250512-2.html
         summary: 人の関節潤滑機能を模した人体模倣ロボットの液体滲出軟骨機構の構成法
       - title: in Japanese, 第24回計測自動制御学会システムインテグレーション部門講演会 優秀講演賞
         authors:
           - "三木章寛"
-        date: 2024-1-23
+        date: 2024-01-23
         awarder: 計測自動制御学会
         url: https://sice-si.org/si2023/
         summary: 人の関節潤滑機能を模した人体模倣ロボットの液体滲出軟骨機構の構成法
       - title: in Japanese, 第3回ロボティクスシンポジア優秀研究・技術賞
         authors:
           - "三木章寛, 永松祐弥，河原塚健人，平岡直樹，岡田慧，稲葉雅幸"
-        date: 2023-9-13
+        date: 2023-09-13
         awarder: 日本ロボット学会
         url: https://www.rsj.or.jp/info/awards/category/ykg_rs/
         summary: 高応答性を備え多様なロボットの扱いを可能とするハードウェア抽象化デバイス制御プラットフォーム開発
