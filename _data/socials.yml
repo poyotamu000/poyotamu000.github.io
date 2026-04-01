@@ -12,8 +12,18 @@
 #   logo: https://www.alberteinstein.com/wp-content/uploads/2024/03/cropped-favicon-192x192.png # can be png, svg, jpg
 #   title: Custom Social
 #   url: https://www.alberteinstein.com/
-email: miki@jsk.imi.i.u-tokyo.ac.jp # your email address
-scholar_userid: Ce6GqwEAAAAJ # your Google Scholar ID
-x_username: Aki_Miki_2401 # your X (Twitter) username
-github_username: poyotamu000 # your GitHub username
-linkedin_username: akihiro-miki-18641829b # your LinkedIn username
+email:
+  value: miki@jsk.imi.i.u-tokyo.ac.jp
+  logo: fa-solid fa-envelope
+scholar_userid:
+  value: Ce6GqwEAAAAJ
+  logo: ai ai-google-scholar
+x_username:
+  value: Aki_Miki_2401
+  logo: fa-brands fa-x-twitter
+github_username:
+  value: poyotamu000
+  logo: fa-brands fa-github
+linkedin_username:
+  value: akihiro-miki-18641829b
+  logo: fa-brands fa-linkedin
