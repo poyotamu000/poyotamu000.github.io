@@ -1,10 +1,9 @@
 cv:
   name: Akihiro Miki
-  label: Project Assistant Professor
-  image: /assets/img/prof_pic.jpg
+  headline: Project Assistant Professor
+  photo: /assets/img/prof_pic.jpg
   email: miki@jsk.imi.i.u-tokyo.ac.jp
-  location: Tokyo, Japan
-  summary: a Project Assistant Professor at the University of Tokyo, working on the intersection of biological understanding and intelligent machine design, with a focus on biomimetic robotics to investigate biological systems and their underlying principles.
+  location: JSK Robotics laboratory, Dept. of Mechano-Informatics, Room 73B1, Engineering Building No. 2, 7-3-1, Hongo, Bunkyo-ku, Tokyo 113-8656, Japan
 
   social_networks:
     - network: X
@@ -16,15 +15,18 @@ cv:
     - network: Google Scholar
       username: Ce6GqwEAAAAJ
 
-  # address: "JSK Robotics laboratory, Dept. of Mechano-Informatics, Room 73B1, Engineering Building No. 2, 7-3-1, Hongo, Bunkyo-ku, Tokyo 113-8656, Japan"
-  address:
-    street: JSK Robotics laboratory, Dept. of Mechano-Informatics, Room 73B1, Engineering Building No. 2, 7-3-1
-    city: Hongo, Bunkyo-ku
-    region: Tokyo
-    postalCode: 113-8656
-    countryCode: JP
+  # # address: "JSK Robotics laboratory, Dept. of Mechano-Informatics, Room 73B1, Engineering Building No. 2, 7-3-1, Hongo, Bunkyo-ku, Tokyo 113-8656, Japan"
+  # address:
+  #   street: JSK Robotics laboratory, Dept. of Mechano-Informatics, Room 73B1, Engineering Building No. 2, 7-3-1
+  #   city: Hongo, Bunkyo-ku
+  #   region: Tokyo
+  #   postalCode: 113-8656
+  #   countryCode: JP
 
   sections:
+    Summary:
+      - bullet: a Project Assistant Professor at the University of Tokyo, working on the intersection of biological understanding and intelligent machine design, with a focus on biomimetic robotics to investigate biological systems and their underlying principles.
+
     Education:
       - institution: The University of Tokyo
         location: Tokyo, Japan
