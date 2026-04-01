@@ -126,6 +126,26 @@ layout: default
         {% endif %}
 
         <!-- RenderCV Sections - Merge Experience and Volunteer -->
+        {% if cv.sections.Summary and cv.sections.Summary.size > 0 %}
+          <a class="anchor" id="summary"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">Summary</h3>
+            <div>
+              {% for entry in cv.sections.Summary %}
+                {% if entry.bullet %}
+                  <ul class="card-text font-weight-light list-group list-group-flush">
+                    <li class="list-group-item">{{ entry.bullet | markdownify | remove: '<p>' | remove: '</p>' }}</li>
+                  </ul>
+                {% elsif entry.label %}
+                  <div class="card-text font-weight-light">
+                    <strong>{{ entry.label }}:</strong> {{ entry.details }}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
         {% comment %} First, combine Experience and Volunteer entries {% endcomment %}
         {% assign empty_array = '' | split: ',' %}
         {% assign exp = cv.sections.Experience | default: empty_array %}
@@ -148,7 +168,7 @@ layout: default
           {% assign section_entries = section_pair[1] %}
 
           {% comment %} Skip Experience and Volunteer as we've already processed them combined {% endcomment %}
-          {% if section_title == 'Experience' or section_title == 'Volunteer' %}
+          {% if section_title == 'Experience' or section_title == 'Volunteer' or section_title == 'Summary' %}
             {% continue %}
           {% endif %}
 
