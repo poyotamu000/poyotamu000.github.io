@@ -28,6 +28,7 @@ latest_posts:
 ---
 
 My research lies at the intersection of biological understanding and intelligent machine design, with a focus on biomimetic robotics to investigate biological systems and their underlying principles.
+
 I take a constructive approach, building robotic systems grounded in physiological hierarchies, particularly starting from the tissue level, including receptor-level sensing, proprioception, fluid lubrication, and musculoskeletal mechanisms.
 
 - GitHub: [poyotamu000](https://github.com/poyotamu000)
