@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Project Assistant Professor / Researcher, JSK Robotics Lab, The University of Tokyo
+subtitle: Project Assistant Professor, JSK Robotics Lab, The University of Tokyo
 
 profile:
   align: right
@@ -27,24 +27,24 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Akihiro Miki is a Project Assistant Professor / Researcher at JSK Robotics Lab,
-The University of Tokyo.
-
-Research interests include robotics, biomimetics, neuroscience, physiology, and
-embodied intelligence.
+My research lies at the intersection of biological understanding and intelligent machine design, with a focus on biomimetic robotics to investigate biological systems and their underlying principles.
+I take a constructive approach, building robotic systems grounded in physiological hierarchies, particularly starting from the tissue level, including receptor-level sensing, proprioception, fluid lubrication, and musculoskeletal mechanisms.
 
 - GitHub: [poyotamu000](https://github.com/poyotamu000)
 - Email: [miki@jsk.imi.i.u-tokyo.ac.jp](mailto:miki@jsk.imi.i.u-tokyo.ac.jp)
 
 ## Research Keywords
 
+My research explores explores principles of living systems through biomimetic robots.
+
 - Robotics
 - Biomimetics
 - Neuroscience
 - Physiology
 - Embodied Intelligence
+- Constructive Understanding
 
 ## Publications
 
-The publication list from the previous site has been migrated to the
+The full publication list is available on the
 [publications page](/publications/).
