@@ -440,13 +440,13 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-our-paper-on-the-proprioceptive-potential-of-joint-receptors-has-been-published-in-scientific-reports",
-          title: 'Our paper on the proprioceptive potential of joint receptors has been published in...',
+            },},{id: "news-our-paper-exploring-the-proprioceptive-potential-of-joint-receptors-using-a-biomimetic-robotic-joint-has-been-published-in-scientific-reports",
+          title: 'Our paper “Exploring the proprioceptive potential of joint receptors using a biomimetic robotic...',
           description: "",
           section: "News",},{id: "news-i-received-my-ph-d-in-information-science-and-technology-from-the-university-of-tokyo-i-was-also-selected-as-a-representative-graduate-and-delivered-a-speech-at-the-commencement-ceremony",
           title: 'I received my Ph.D. in Information Science and Technology from The University of...',
           description: "",
-          section: "News",},{id: "news-i-have-been-appointed-as-a-project-assistant-professor-in-the-department-of-information-science-and-technology-the-university-of-tokyo",
+          section: "News",},{id: "news-i-have-been-appointed-as-a-project-assistant-professor-in-the-department-of-information-science-and-technology-the-university-of-tokyo-affiliated-with-the-creative-informatics",
           title: 'I have been appointed as a Project Assistant Professor in the Department of...',
           description: "",
           section: "News",},{id: "projects-project-1",
