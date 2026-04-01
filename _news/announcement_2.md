@@ -2,18 +2,18 @@
 layout: post
 title: I received my Ph.D. in Information Science and Technology from The University of Tokyo and was selected as a representative graduate, delivering a speech at the commencement ceremony.
 date: 2026-03-24
-inline: false
+inline: true
 related_posts: false
 ---
 
+## <!--
 
-<!--
----
 layout: post
 title: A long announcement with details
 date: 2015-11-07 16:11:00-0400
 inline: false
 related_posts: false
+
 ---
 
 Announcements and news can be much longer than just quick inline posts. In fact, they can have all the features available for the standard blog posts. See below.
