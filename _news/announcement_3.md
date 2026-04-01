@@ -6,4 +6,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper on the proprioceptive potential of joint receptors has been published in *Scientific Reports*.
+Our paper _"Exploring the proprioceptive potential of joint receptors using a biomimetic robotic joint"_ has been published in _Scientific Reports_.
