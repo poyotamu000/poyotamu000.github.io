@@ -1,5 +1,16 @@
 ---
 layout: post
+title: "Ph.D. in Information Science and Technology"
+date: 2026-03-24
+inline: false
+related_posts: false
+---
+
+I received my Ph.D. in Information Science and Technology from The University of Tokyo and was selected as a representative graduate, delivering a speech at the commencement ceremony.
+
+<!--
+---
+layout: post
 title: A long announcement with details
 date: 2015-11-07 16:11:00-0400
 inline: false
@@ -30,4 +41,4 @@ Pug heirloom High Life vinyl swag, single-origin coffee four dollar toast taxide
 > We do not grow absolutely, chronologically. We grow sometimes in one dimension, and not in another, unevenly. We grow partially. We are relative. We are mature in one realm, childish in another.
 > —Anais Nin
 
-Fap aliqua qui, scenester pug Echo Park polaroid irony shabby chic ex cardigan church-key Odd Future accusamus. Blog stumptown sartorial squid, gastropub duis aesthetic Truffaut vero. Pinterest tilde twee, odio mumblecore jean shorts lumbersexual.
+Fap aliqua qui, scenester pug Echo Park polaroid irony shabby chic ex cardigan church-key Odd Future accusamus. Blog stumptown sartorial squid, gastropub duis aesthetic Truffaut vero. Pinterest tilde twee, odio mumblecore jean shorts lumbersexual. -->
