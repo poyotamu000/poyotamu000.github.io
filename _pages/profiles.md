@@ -23,12 +23,12 @@ nav_order: 7
 # ---
 ---
 
-## [JSK Robotics Laboratory Website](http://www.jsk.t.u-tokyo.ac.jp/) (PI: Kei Okada)
+- [JSK Robotics Laboratory Website](http://www.jsk.t.u-tokyo.ac.jp/) (PI: Kei Okada)
 
 <!-- The JSK Robotics Laboratory focuses on large-scale robotics systems, humanoid robots, and real-world robotic applications. -->
 
 ---
 
-## [EVARL Laboratory Website](https://www.eva.ai.u-tokyo.ac.jp/) (PI: Kento Kawaharazuka)
+- [EVARL Laboratory Website](https://www.eva.ai.u-tokyo.ac.jp/) (PI: Kento Kawaharazuka)
 
 <!-- The EVARL conducts research on embodied intelligence, integrating perception, action, and learning in robotic systems. -->
