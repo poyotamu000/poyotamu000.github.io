@@ -19,8 +19,8 @@ nav_order: 7
 # <p>The University of Tokyo</p>
 
 # <p><a href="http://www.jsk.t.u-tokyo.ac.jp/" target="_blank">jsk.t.u-tokyo.ac.jp</a></p>
+---
 
-# ---
 ---
 
 - [JSK Robotics Laboratory Website](http://www.jsk.t.u-tokyo.ac.jp/) (PI: Kei Okada)
