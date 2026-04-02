@@ -30,9 +30,9 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/teaching/";
           },
-        },{id: "nav-collaborator",
-          title: "Collaborator",
-          description: "collaborators and research partners",
+        },{id: "nav-collaborators",
+          title: "Collaborators",
+          description: "Affiliated with both JSK Robotics Laboratory and EVARL (Evolutionary, deVelopmental, and Adaptive Robotics Laboratory) at The University of Tokyo, with my primary appointment as a Project Assistant Professor at JSK.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/people/";
