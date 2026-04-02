@@ -31,9 +31,6 @@ My research lies at the intersection of biological understanding and intelligent
 
 I take a constructive approach, building robotic systems grounded in physiological hierarchies, particularly starting from the tissue level, including receptor-level sensing, proprioception, fluid lubrication, and musculoskeletal mechanisms.
 
-<!-- - GitHub: [poyotamu000](https://github.com/poyotamu000)
-- Email: [miki@jsk.imi.i.u-tokyo.ac.jp](mailto:miki@jsk.imi.i.u-tokyo.ac.jp) -->
-
 ## Research Keywords
 
 My research explores explores principles of living systems through biomimetic robots.
