@@ -13,8 +13,20 @@ nav_order: 2
 
 {% include bib_search.liquid %}
 
-<div class="publications">
+Add `pubtype` to each BibTeX entry using one of: `international_journal`, `international_conference`, `domestic_journal`, `domestic_conference`.
 
-{% bibliography %}
+## International Journal Papers
 
-</div>
+{% bibliography --query @*[pubtype=international_journal] %}
+
+## International Conference Proceedings
+
+{% bibliography --query @*[pubtype=international_conference] %}
+
+## Domestic Journal Papers
+
+{% bibliography --query @*[pubtype=domestic_journal] %}
+
+## Domestic Conference Proceedings
+
+{% bibliography --query @*[pubtype=domestic_conference] %}
