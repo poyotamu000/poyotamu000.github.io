@@ -6,31 +6,31 @@ title: publications
 nav: true
 nav_order: 2
 _styles: |
-	ol.bibliography {
-		list-style: none;
-		padding-left: 0;
-		margin-top: 0.25rem;
-	}
+  ol.bibliography {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0.25rem;
+  }
 
-	ol.bibliography li {
-		margin-bottom: 0.5rem;
-		font-size: 0.93rem;
-		line-height: 1.35;
-	}
+  ol.bibliography li {
+    margin-bottom: 0.5rem;
+    font-size: 0.93rem;
+    line-height: 1.35;
+  }
 
-	ol.bibliography li .pub-title {
-		font-weight: 600;
-	}
+  ol.bibliography li .pub-title {
+    font-weight: 600;
+  }
 
-	h2 {
-		margin-top: 1.3rem;
-		margin-bottom: 0.35rem;
-		font-size: 1.2rem;
-	}
+  h2 {
+    margin-top: 1.3rem;
+    margin-bottom: 0.35rem;
+    font-size: 1.2rem;
+  }
 
-	h2.bibliography {
-		display: none;
-	}
+  h2.bibliography {
+    display: none;
+  }
 ---
 
 <!-- _pages/publications.md -->
