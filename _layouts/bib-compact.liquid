@@ -1,0 +1,74 @@
+---
+---
+{% assign proceedings = 'inproceedings,incollection' | split: ',' %}
+{% assign theses = 'thesis,mastersthesis,phdthesis' | split: ',' %}
+
+{% capture venue %}
+  {% if entry.type == 'article' %}
+    {{ entry.journal }}
+  {% elsif proceedings contains entry.type %}
+    {{ entry.booktitle }}
+  {% elsif theses contains entry.type %}
+    {{ entry.school }}
+  {% else %}
+    {{ entry.publisher }}
+  {% endif %}
+{% endcapture %}
+
+{% assign link_count = 0 %}
+
+<span class="pub-authors">
+  {% for author in entry.author_array %}
+    {{ author.first }}
+    {{ author.last -}}
+    {%- unless forloop.last %}, {% endunless %}
+  {% endfor %}
+</span>
+"<span class="pub-title">{{ entry.title }}</span>", in <em>{{ venue | strip }}</em>
+{%- if entry.year %}, {{ entry.year }}{% endif -%}
+{%- if entry.volume %}, vol. {{ entry.volume }}{% endif -%}
+{%- if entry.number %}, no. {{ entry.number }}{% endif -%}
+{%- if entry.pages %}, pp. {{ entry.pages }}{% endif -%}
+{%- if entry.note %}, {{ entry.note }}{% endif %}.
+
+{% if entry.arxiv or entry.website or entry.html or entry.doi or entry.pdf or entry.video or entry.code %}
+  [
+  {% if entry.arxiv %}
+    <a href="https://arxiv.org/abs/{{ entry.arxiv }}">arXiv</a>{% assign link_count = link_count | plus: 1 %}
+  {% endif %}
+  {% if entry.website %}
+    {% if link_count > 0 %} | {% endif -%}
+    <a href="{{ entry.website }}">website</a>{% assign link_count = link_count | plus: 1 %}
+  {% endif %}
+  {% if entry.html %}
+    {% if link_count > 0 %} | {% endif %}
+    {% if entry.html contains '://' %}
+      <a href="{{ entry.html }}">page</a>
+    {% else %}
+      <a href="{{ entry.html | prepend: '/assets/html/' | relative_url }}">page</a>
+    {% endif %}
+    {% assign link_count = link_count | plus: 1 %}
+  {% endif %}
+  {% if entry.doi %}
+    {% if link_count > 0 %} | {% endif -%}
+    <a href="https://doi.org/{{ entry.doi }}">paper</a>{% assign link_count = link_count | plus: 1 %}
+  {% endif %}
+  {% if entry.pdf %}
+    {% if link_count > 0 %} | {% endif %}
+    {% if entry.pdf contains '://' %}
+      <a href="{{ entry.pdf }}">paper</a>
+    {% else %}
+      <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}">paper</a>
+    {% endif %}
+    {% assign link_count = link_count | plus: 1 %}
+  {% endif %}
+  {% if entry.video %}
+    {% if link_count > 0 %} | {% endif -%}
+    <a href="{{ entry.video }}">video</a>{% assign link_count = link_count | plus: 1 %}
+  {% endif %}
+  {% if entry.code %}
+    {% if link_count > 0 %} | {% endif -%}
+    <a href="{{ entry.code }}">code</a>{% assign link_count = link_count | plus: 1 %}
+  {% endif %}
+  ]
+{% endif %}
