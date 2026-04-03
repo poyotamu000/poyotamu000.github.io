@@ -22,6 +22,14 @@ _styles: |
     font-weight: 600;
   }
 
+  ol.bibliography li .self-author {
+    font-weight: 700;
+  }
+
+  ol.bibliography li .self-author-romanized {
+    text-transform: uppercase;
+  }
+
   h2 {
     margin-top: 1.3rem;
     margin-bottom: 0.35rem;
