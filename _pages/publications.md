@@ -72,7 +72,7 @@ No awards listed yet.
 
 {% assign entries = site.data.grants.entries | default: empty_array %}
 {% if entries.size > 0 %}
-{% include publications/entry-list.liquid %}
+{% include publications/grants-simple-list.liquid %}
 {% else %}
 No grants or scholarships listed yet.
 {% endif %}

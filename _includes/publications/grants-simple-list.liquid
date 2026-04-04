@@ -1,0 +1,18 @@
+<ol class="bibliography">
+  {% for entry in entries %}
+    <li>
+      {% if entry.url %}
+        <a href="{{ entry.url }}">{{ entry.title }}</a>
+      {% else %}
+        {{ entry.title }}
+      {% endif %}
+      {% if entry.start_date and entry.end_date %}
+        {{ entry.start_date | replace: '-', '.' }}-{{ entry.end_date | replace: '-', '.' }}
+      {% elsif entry.start_date %}
+        {{ entry.start_date | replace: '-', '.' }}-
+      {% elsif entry.date %}
+        {{ entry.date | replace: '-', '.' }}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ol>
