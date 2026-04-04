@@ -103,36 +103,6 @@ cv:
     #       - "Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march."
     #       - "Men of the year 2014 by Time magazine"
 
-    Awards:
-      - title: Valedictorian (Graduation Ceremony Representative)
-        authors:
-          - Akihiro Miki
-        date: 2026-03-24
-        awarder: The University of Tokyo
-        url: https://www.u-tokyo.ac.jp/focus/en/articles/z1301_00062.html
-        summary: Selected to deliver the commencement address on behalf of graduating students.
-      - title: in Japanese, 2024年度計測自動制御学会 学術奨励賞
-        authors:
-          - "三木章寛"
-        date: 2025-03-18
-        awarder: 計測自動制御学会
-        url: https://www.sice.jp/info/info_press/press_20250512-2.html
-        summary: 人の関節潤滑機能を模した人体模倣ロボットの液体滲出軟骨機構の構成法
-      - title: in Japanese, 第24回計測自動制御学会システムインテグレーション部門講演会 優秀講演賞
-        authors:
-          - "三木章寛"
-        date: 2024-01-23
-        awarder: 計測自動制御学会
-        url: https://sice-si.org/si2023/
-        summary: 人の関節潤滑機能を模した人体模倣ロボットの液体滲出軟骨機構の構成法
-      - title: in Japanese, 第3回ロボティクスシンポジア優秀研究・技術賞
-        authors:
-          - "三木章寛, 永松祐弥，河原塚健人，平岡直樹，岡田慧，稲葉雅幸"
-        date: 2023-09-13
-        awarder: 日本ロボット学会
-        url: https://www.rsj.or.jp/info/awards/category/ykg_rs/
-        summary: 高応答性を備え多様なロボットの扱いを可能とするハードウェア抽象化デバイス制御プラットフォーム開発
-
     Selected Publications:
       - title: Exploring the proprioceptive potential of joint receptors using a biomimetic robotic joint
         authors:
@@ -190,7 +160,7 @@ cv:
         journal: Intelligent Autonomous Systems 18 | pp. 109-122
         date: 2024
         url: https://doi.org/10.1007/978-3-031-44851-5_9
-        summary: "Category: Musculoskeletal Systems | Abstract: This work details the system architecture of the Musashi-W musculoskeletal wheeled robot and demonstrates integration of multiple hardware components for stable real-world task execution."
+        summary: "Category: Musculoskeletal Humanoid | Abstract: This work details the system architecture of the Musashi-W musculoskeletal wheeled robot and demonstrates integration of multiple hardware components for stable real-world task execution."
 
     Skills:
       - name: Robotics
