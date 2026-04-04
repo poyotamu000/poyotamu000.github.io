@@ -63,25 +63,25 @@ _styles: |
 {% assign empty_array = '' | split: ',' %}
 {% assign entries = site.data.awards.entries | default: empty_array %}
 {% if entries.size > 0 %}
-  {% include cv/awards.liquid %}
+{% include cv/awards.liquid %}
 {% else %}
-  No awards listed yet.
+No awards listed yet.
 {% endif %}
 
 ## Grants-in-Aid and Scholarship
 
 {% assign entries = site.data.grants.entries | default: empty_array %}
 {% if entries.size > 0 %}
-  {% include cv/awards.liquid %}
+{% include cv/awards.liquid %}
 {% else %}
-  No grants or scholarships listed yet.
+No grants or scholarships listed yet.
 {% endif %}
 
 ## Media
 
 {% assign entries = site.data.media.entries | default: empty_array %}
 {% if entries.size > 0 %}
-  {% include cv/awards.liquid %}
+{% include cv/awards.liquid %}
 {% else %}
-  No media items listed yet.
+No media items listed yet.
 {% endif %}

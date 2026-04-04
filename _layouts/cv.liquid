@@ -204,7 +204,14 @@ layout: default
           {% assign section_entries = section_pair[1] %}
 
           {% comment %} Skip Experience and Volunteer as we've already processed them combined {% endcomment %}
-          {% if section_title == 'Experience' or section_title == 'Volunteer' or section_title == 'Summary' or section_title == 'Awards' or section_title == 'Honors and Awards' or section_title == 'Grants-in-Aid and Scholarship' or section_title == 'Media' %}
+          {% if section_title == 'Experience'
+            or section_title == 'Volunteer'
+            or section_title == 'Summary'
+            or section_title == 'Awards'
+            or section_title == 'Honors and Awards'
+            or section_title == 'Grants-in-Aid and Scholarship'
+            or section_title == 'Media'
+          %}
             {% continue %}
           {% endif %}
 
