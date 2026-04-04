@@ -45,7 +45,7 @@ _styles: |
 
 {% bibliography --template bib-compact --group_by none --query @*[pubtype=international_journal] %}
 
-## International Conference Proceedings
+## International Conference Proceedings (Peer Reviewed)
 
 {% bibliography --template bib-compact --group_by none --query @*[pubtype=international_conference] %}
 
