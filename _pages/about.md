@@ -8,10 +8,7 @@ profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
-  more_info: >
-    # <p>JSK Robotics Lab</p>
-    # <p>The University of Tokyo</p>
-    # <p>miki@jsk.imi.i.u-tokyo.ac.jp</p>
+  # more_info: >
 
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
@@ -72,4 +69,4 @@ Selected publications below highlight two directions in my research: one from th
 
 {% bibliography --template bib-compact --group_by none --query @*[selected=true] %}
 
-The full publication list is available on the [publications page](/publications/).
+The full publication list is available on the [Works & Publications page](/publications/).
