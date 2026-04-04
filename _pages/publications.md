@@ -7,8 +7,8 @@ nav: true
 nav_order: 2
 _styles: |
   ol.bibliography {
-    list-style: none;
-    padding-left: 0;
+    list-style: decimal;
+    padding-left: 1.5rem;
     margin-top: 0.25rem;
   }
 
@@ -27,9 +27,10 @@ _styles: |
   }
 
   h2 {
-    margin-top: 1.3rem;
-    margin-bottom: 0.35rem;
-    font-size: 1.2rem;
+    margin-top: 1.6rem;
+    margin-bottom: 0.45rem;
+    font-size: 1.45rem;
+    font-weight: 700;
   }
 
   h2.bibliography {
