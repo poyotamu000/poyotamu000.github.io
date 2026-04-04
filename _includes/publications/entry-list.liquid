@@ -1,0 +1,14 @@
+<ol class="bibliography">
+  {% for entry in entries %}
+    <li>
+      {% if entry.url %}
+        <a href="{{ entry.url }}">{{ entry.title }}</a>
+      {% else %}
+        {{ entry.title }}
+      {% endif %}
+      {% if entry.awarder %}. {{ entry.awarder }}{% endif %}
+      {% if entry.date %}. {{ entry.date }}{% endif %}
+      {% if entry.summary %}. {{ entry.summary }}{% endif %}
+    </li>
+  {% endfor %}
+</ol>
