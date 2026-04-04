@@ -20,6 +20,11 @@
 {% endcapture %}
 
 {% assign link_count = 0 %}
+{% assign doi_value = entry.doi | default: '' | strip %}
+{% assign has_doi = false %}
+{% if doi_value != '' %}
+  {% assign has_doi = true %}
+{% endif %}
 
 <span class="pub-authors">
   {% for author in entry.author_array %}
@@ -53,13 +58,19 @@
   {% endfor %}
 </span>
 "<span class="pub-title">{{ entry.title }}</span>", in <em>{{ venue | strip }}</em>
-{%- if entry.year %}, {{ entry.year }}{% endif -%}
 {%- if entry.volume %}, vol. {{ entry.volume }}{% endif -%}
 {%- if entry.number %}, no. {{ entry.number }}{% endif -%}
-{%- if entry.pages %}, pp. {{ entry.pages }}{% endif -%}
-{%- if entry.note %}, {{ entry.note }}{% endif %}.
+{%- if entry.pages -%}
+  {%- if entry.pubtype == 'domestic_conference' -%}
+    , {{ entry.pages }}
+  {%- else -%}
+    , pp. {{ entry.pages }}
+  {%- endif -%}
+{%- endif -%}
+{%- if entry.note %}, {{ entry.note }}{% endif -%}
+{%- if entry.year %}, {{ entry.year }}{% endif %}.
 
-{% if entry.arxiv or entry.website or entry.html or entry.doi or entry.pdf or entry.video or entry.code %}
+{% if entry.arxiv or entry.website or entry.html or has_doi or entry.pdf or entry.video or entry.code %}
   [
   {% if entry.arxiv %}
     <a href="https://arxiv.org/abs/{{ entry.arxiv }}">arXiv</a>{% assign link_count = link_count | plus: 1 %}
@@ -77,16 +88,16 @@
     {% endif %}
     {% assign link_count = link_count | plus: 1 %}
   {% endif %}
-  {% if entry.doi %}
+  {% if has_doi %}
     {% if link_count > 0 %} | {% endif -%}
-    <a href="https://doi.org/{{ entry.doi }}">paper</a>{% assign link_count = link_count | plus: 1 %}
+    <a href="https://doi.org/{{ doi_value }}">paper</a>{% assign link_count = link_count | plus: 1 %}
   {% endif %}
   {% if entry.pdf %}
     {% if link_count > 0 %} | {% endif %}
     {% if entry.pdf contains '://' %}
-      <a href="{{ entry.pdf }}">paper</a>
+      <a href="{{ entry.pdf }}">pdf</a>
     {% else %}
-      <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}">paper</a>
+      <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}">pdf</a>
     {% endif %}
     {% assign link_count = link_count | plus: 1 %}
   {% endif %}
