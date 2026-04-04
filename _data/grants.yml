@@ -1,15 +1,24 @@
 entries:
   - title: JSPS Research Fellowship for Young Scientists (DC2)
     awarder: JSPS (Japan Society for the Promotion of Science)
-    summary: Fellowship period 2024-04 to 2026-03.
+    start_date: 2024-04
+    end_date: 2026-03
   - title: The University of Tokyo "Advanced Human Resource Development Leading Green Transformation (GX) (SPRING GX)" Project student.
     awarder: Japan Science and Technology Agency (JST)
-    summary: Fellowship period 2023-04 to 2024-03.
+    start_date: 2023-04
+    end_date: 2024-03
   - title: 公益信託岩井久雄記念東京奨学育英基金
-    summary: Fellowship period 2023-04 to 2024-03.
-  - title: Iwadare Scholarship Foundation Scholarship (in Japanese, 公益財団法人岩垂奨学会)
-    summary: Fellowship period 2021-04 to 2022-03.
+    start_date: 2023-04
+    end_date: 2024-03
   - title: 公益財団林レオロジー記念財団奨学金
-    summary: Fellowship period 2019-04 to 2021-03, and 2022-04 to 2023-03.
+    start_date: 2022-04
+    end_date: 2023-03
+  - title: Iwadare Scholarship Foundation Scholarship (in Japanese, 公益財団法人岩垂奨学会)
+    start_date: 2021-04
+    end_date: 2022-03
+  - title: 公益財団林レオロジー記念財団奨学金
+    start_date: 2019-04
+    end_date: 2021-03
   - title: SINNIHON SCHOLARSHIP FOUNDATION Scholarship (in Japanese, 公益財団法人新日本奨学会奨学金)
-    summary: Fellowship period 2019-04 to 2022-03.
+    start_date: 2019-04
+    end_date: 2023-03.
