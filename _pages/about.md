@@ -44,5 +44,8 @@ My research explores explores principles of living systems through biomimetic ro
 
 ## Publications
 
-The full publication list is available on the
-[publications page](/publications/).
+The full publication list is available on the [publications page](/publications/).
+
+Selected publications below highlight two directions in my research: one from the perspective of constructive understanding, and one from the perspective of biomimetics and soft robotics.
+
+{% bibliography --group_by none --query @*[selected=true]* %}
