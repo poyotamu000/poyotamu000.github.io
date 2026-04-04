@@ -68,7 +68,8 @@
   {%- endif -%}
 {%- endif -%}
 {%- if entry.note %}, {{ entry.note }}{% endif -%}
-{%- if entry.year %}, {{ entry.year }}{% endif %}.
+{%- if entry.year %}, {{ entry.year }}{% endif -%}
+{%- if entry.award %}, <span style="color: #c62828; font-weight: 600">{{ entry.award }}</span>{% endif %}.
 
 {% if entry.arxiv or entry.website or entry.html or has_doi or entry.pdf or entry.video or entry.code %}
   [
