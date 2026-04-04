@@ -2,8 +2,8 @@ cv:
   name: Akihiro Miki
   headline: Project Assistant Professor
   photo: ../assets/img/prof_pic.jpg
-  email: miki@jsk.imi.i.u-tokyo.ac.jp
-  location: JSK Robotics laboratory, Dept. of Mechano-Informatics, Room 73B1, Engineering Building No. 2, 7-3-1, Hongo, Bunkyo-ku, Tokyo 113-8656, Japan
+  email: miki [at] jsk.imi.i.u-tokyo.ac.jp
+  location: JSK Robotics laboratory, Dept. of Mechano-Informatics, Graduate School of Information Science and Technology, The University of Tokyo, Tokyo, Japan
 
   social_networks:
     - network: X
@@ -133,7 +133,7 @@ cv:
         url: https://www.rsj.or.jp/info/awards/category/ykg_rs/
         summary: 高応答性を備え多様なロボットの扱いを可能とするハードウェア抽象化デバイス制御プラットフォーム開発
 
-    Publications:
+    Selected Publications:
       - title: Exploring the proprioceptive potential of joint receptors using a biomimetic robotic joint
         authors:
           - Akihiro Miki
