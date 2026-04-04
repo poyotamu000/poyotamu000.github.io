@@ -76,25 +76,30 @@
 
 {% if entry.arxiv or entry.website or entry.html or has_doi or entry.pdf or entry.video or entry.code %}
   [
+  {% if has_doi %}
+    {% if link_count > 0 %} | {% endif -%}
+    <a href="https://doi.org/{{ doi_value }}">paper</a>{% assign link_count = link_count | plus: 1 %}
+  {% endif %}
+  {% if entry.video %}
+    {% if link_count > 0 %} | {% endif -%}
+    <a href="{{ entry.video }}">video</a>{% assign link_count = link_count | plus: 1 %}
+  {% endif %}
+  {% if entry.html %}
+    {% if link_count > 0 %} | {% endif %}
+    {% if entry.html contains '://' %}
+      <a href="{{ entry.html }}">project page</a>
+    {% else %}
+      <a href="{{ entry.html | prepend: '/assets/html/' | relative_url }}">project page</a>
+    {% endif %}
+    {% assign link_count = link_count | plus: 1 %}
+  {% endif %}
   {% if entry.arxiv %}
+    {% if link_count > 0 %} | {% endif -%}
     <a href="https://arxiv.org/abs/{{ entry.arxiv }}">arXiv</a>{% assign link_count = link_count | plus: 1 %}
   {% endif %}
   {% if entry.website %}
     {% if link_count > 0 %} | {% endif -%}
     <a href="{{ entry.website }}">website</a>{% assign link_count = link_count | plus: 1 %}
-  {% endif %}
-  {% if entry.html %}
-    {% if link_count > 0 %} | {% endif %}
-    {% if entry.html contains '://' %}
-      <a href="{{ entry.html }}">page</a>
-    {% else %}
-      <a href="{{ entry.html | prepend: '/assets/html/' | relative_url }}">page</a>
-    {% endif %}
-    {% assign link_count = link_count | plus: 1 %}
-  {% endif %}
-  {% if has_doi %}
-    {% if link_count > 0 %} | {% endif -%}
-    <a href="https://doi.org/{{ doi_value }}">paper</a>{% assign link_count = link_count | plus: 1 %}
   {% endif %}
   {% if entry.pdf %}
     {% if link_count > 0 %} | {% endif %}
@@ -104,10 +109,6 @@
       <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}">pdf</a>
     {% endif %}
     {% assign link_count = link_count | plus: 1 %}
-  {% endif %}
-  {% if entry.video %}
-    {% if link_count > 0 %} | {% endif -%}
-    <a href="{{ entry.video }}">video</a>{% assign link_count = link_count | plus: 1 %}
   {% endif %}
   {% if entry.code %}
     {% if link_count > 0 %} | {% endif -%}
