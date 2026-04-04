@@ -4,7 +4,7 @@ permalink: /people/
 title: Collaborators
 description: Affiliated with both JSK Robotics Laboratory and EVARL (Evolutionary, deVelopmental, and Adaptive Robotics Laboratory) at The University of Tokyo, with my primary appointment as a Project Assistant Professor at JSK.
 nav: true
-nav_order: 7
+nav_order: 4
 
 # profiles:
 
