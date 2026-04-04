@@ -2,10 +2,6 @@
 ---
 {% assign proceedings = 'inproceedings,incollection' | split: ',' %}
 {% assign theses = 'thesis,mastersthesis,phdthesis' | split: ',' %}
-{% assign self_first_romanized = 'Akihiro' %}
-{% assign self_last_romanized = 'Miki' %}
-{% assign self_first_japanese = '章寛' %}
-{% assign self_last_japanese = '三木' %}
 
 {% capture venue %}
   {% if entry.type == 'article' %}
@@ -24,22 +20,22 @@
 <span class="pub-authors">
   {% for author in entry.author_array %}
     {% assign author_name = '' %}
-    {% assign author_class = '' %}
-
-    {% if author.first == self_first_romanized and author.last == self_last_romanized %}
-      {% assign author_name = 'AKIHIRO MIKI' %}
-      {% assign author_class = 'self-author self-author-romanized' %}
-    {% elsif author.first == self_first_japanese and author.last == self_last_japanese %}
-      {% assign author_name = self_last_japanese | append: ' ' | append: self_first_japanese %}
-      {% assign author_class = 'self-author self-author-japanese' %}
-    {% elsif author.first == self_last_japanese and author.last == self_first_japanese %}
-      {% assign author_name = self_first_japanese | append: ' ' | append: self_last_japanese %}
-      {% assign author_class = 'self-author self-author-japanese' %}
-    {% else %}
-      {% assign author_name = author.first | append: ' ' | append: author.last %}
+    {% assign author_first = author.first | strip %}
+    {% assign author_last = author.last | strip %}
+    {% assign first_non_japanese = author_first | regex_replace: '[ぁ-んァ-ヶ一-龠々ー・]', '' %}
+    {% assign last_non_japanese = author_last | regex_replace: '[ぁ-んァ-ヶ一-龠々ー・]', '' %}
+    {% assign is_japanese_name = false %}
+    {% if first_non_japanese != author_first or last_non_japanese != author_last %}
+      {% assign is_japanese_name = true %}
     {% endif %}
 
-    <span class="{{ author_class }}">{{ author_name }}</span>
+    {% if is_japanese_name %}
+      {% assign author_name = author_last | append: ' ' | append: author_first %}
+    {% else %}
+      {% assign author_name = author_first | append: ' ' | append: author_last %}
+    {% endif %}
+
+    <span>{{ author_name }}</span>
     {%- unless forloop.last %}, {% endunless %}
   {% endfor %}
 </span>
