@@ -19,7 +19,11 @@ _styles: |
   }
 
   ol.bibliography li .pub-title {
-    font-weight: 600;
+    font-weight: 400;
+  }
+
+  ol.bibliography li .self-author {
+    font-weight: 700;
   }
 
   h2 {

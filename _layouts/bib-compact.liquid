@@ -2,6 +2,10 @@
 ---
 {% assign proceedings = 'inproceedings,incollection' | split: ',' %}
 {% assign theses = 'thesis,mastersthesis,phdthesis' | split: ',' %}
+{% assign self_first_romanized = 'Akihiro' %}
+{% assign self_last_romanized = 'Miki' %}
+{% assign self_first_japanese = '章寛' %}
+{% assign self_last_japanese = '三木' %}
 
 {% capture venue %}
   {% if entry.type == 'article' %}
@@ -20,6 +24,7 @@
 <span class="pub-authors">
   {% for author in entry.author_array %}
     {% assign author_name = '' %}
+    {% assign author_class = '' %}
     {% assign author_first = author.first | strip %}
     {% assign author_last = author.last | strip %}
     {% assign first_non_japanese = author_first | regex_replace: '[ぁ-んァ-ヶ一-龠々ー・]', '' %}
@@ -35,7 +40,15 @@
       {% assign author_name = author_first | append: ' ' | append: author_last %}
     {% endif %}
 
-    <span>{{ author_name }}</span>
+    {% if author_first == self_first_romanized and author_last == self_last_romanized %}
+      {% assign author_class = 'self-author' %}
+    {% elsif author_first == self_first_japanese and author_last == self_last_japanese %}
+      {% assign author_class = 'self-author' %}
+    {% elsif author_first == self_last_japanese and author_last == self_first_japanese %}
+      {% assign author_class = 'self-author' %}
+    {% endif %}
+
+    <span class="{{ author_class }}">{{ author_name }}</span>
     {%- unless forloop.last %}, {% endunless %}
   {% endfor %}
 </span>
