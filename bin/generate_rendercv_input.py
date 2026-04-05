@@ -348,6 +348,12 @@ def build_publications_by_group(bib_path: Path) -> dict[str, list[dict]]:
     return grouped_bullets
 
 
+def split_section_chunks(items: list[dict], chunk_size: int) -> list[list[dict]]:
+    if chunk_size <= 0:
+        return [items]
+    return [items[i : i + chunk_size] for i in range(0, len(items), chunk_size)]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate RenderCV input YAML with synced sections")
     parser.add_argument("--input", required=True, help="Path to source cv.yml")
@@ -356,6 +362,12 @@ def main() -> None:
     parser.add_argument("--grants", default="_data/grants.yml")
     parser.add_argument("--media", default="_data/media.yml")
     parser.add_argument("--bib", default="_bibliography/papers.bib")
+    parser.add_argument(
+        "--max-publications-per-section",
+        type=int,
+        default=10,
+        help="Maximum number of publication bullets in each PDF section before creating a continuation section.",
+    )
     args = parser.parse_args()
 
     in_path = Path(args.input)
@@ -381,7 +393,16 @@ def main() -> None:
 
     publications_by_group = build_publications_by_group(Path(args.bib))
     for _, heading in PUBLICATION_GROUPS:
-        sections[heading] = publications_by_group.get(heading, [{"bullet": "No publications listed yet."}])
+        bullets = publications_by_group.get(heading, [{"bullet": "No publications listed yet."}])
+        chunks = split_section_chunks(bullets, args.max_publications_per_section)
+        if len(chunks) == 1:
+            sections[heading] = chunks[0]
+            continue
+
+        # Split large sections to avoid cramped page breaks in PDF rendering.
+        sections[heading] = chunks[0]
+        for idx, chunk in enumerate(chunks[1:], start=2):
+            sections[f"{heading} (continued {idx})"] = chunk
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with out_path.open("w", encoding="utf-8") as f:
