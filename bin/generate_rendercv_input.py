@@ -365,7 +365,43 @@ def build_publications_by_group(bib_path: Path, profile: str) -> dict[str, list[
                 return (0, str(title))
 
         records.sort(key=sort_key)
-        entries = [rec["entry"] for rec in records if isinstance(rec.get("entry"), dict)]
+        entries_raw = [rec["entry"] for rec in records if isinstance(rec.get("entry"), dict)]
+        
+        # Convert structured entries to numbered bullet format for publications
+        entries: list[dict] = []
+        for idx, entry in enumerate(entries_raw, start=1):
+            if isinstance(entry, dict):
+                # Build the full publication text with numbering
+                parts: list[str] = []
+                
+                # 1. Authors
+                if isinstance(entry.get("authors"), list) and entry["authors"]:
+                    parts.append(", ".join(entry["authors"]))
+                
+                # 2. Title with quotes
+                if entry.get("title"):
+                    parts.append(f"\"{entry['title']}\"")
+                
+                # 3. Journal/venue info
+                if entry.get("journal"):
+                    parts.append(entry["journal"])
+                
+                # 4. Date/year
+                if entry.get("date"):
+                    parts.append(f"({entry['date']})")
+                
+                # Join all parts and add numbering
+                text = " ".join(parts) if parts else "Publication entry"
+                bullet_text = f"{idx}. {text}"
+                
+                # Add link if available
+                if entry.get("doi"):
+                    bullet_text += f" [link]({entry['doi']})"
+                elif entry.get("url"):
+                    bullet_text += f" [link]({entry['url']})"
+                
+                entries.append({"bullet": bullet_text})
+        
         if not entries:
             entries = [{"bullet": "No publications listed yet."}]
         grouped_entries[heading] = entries
