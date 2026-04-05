@@ -23,6 +23,13 @@ latest_posts:
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 _styles: |
+  .robot-hero {
+    clear: both;
+    display: block;
+    margin: 1rem 0 1.5rem;
+    border-radius: 0.5rem;
+  }
+
   ol.bibliography {
     list-style: decimal;
     padding-left: 1.5rem;
@@ -52,6 +59,8 @@ My research lies at the intersection of biological understanding and intelligent
 
 I take a constructive approach, building robotic systems grounded in physiological hierarchies, particularly starting from the tissue level, including receptor-level sensing, proprioception, fluid lubrication, and musculoskeletal mechanisms.
 
+{% include figure.liquid path="/assets/img/robot.png" class="robot-hero" alt="Biomimetic robotics research image" loading="eager" %}
+
 ## Research Keywords
 
 My research explores explores principles of living systems through biomimetic robots.
@@ -63,7 +72,7 @@ My research explores explores principles of living systems through biomimetic ro
 - Embodied Intelligence
 - Constructive Understanding
 
-## Publications
+## Selected Publications
 
 Selected publications below highlight two directions in my research: one from the perspective of constructive understanding, and one from the perspective of biomimetics and soft robotics.
 
