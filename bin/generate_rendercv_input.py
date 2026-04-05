@@ -73,6 +73,8 @@ def resolve_bib_value(value: str, strings: dict[str, str]) -> str:
 
 def format_author_name(name: str) -> str:
     value = clean_text(name)
+    if value.lower().startswith("and "):
+        value = value[4:].strip()
     if not value:
         return ""
     if "," in value:
@@ -82,10 +84,10 @@ def format_author_name(name: str) -> str:
     return value
 
 
-def format_authors(author_field: str) -> str:
+def parse_authors(author_field: str) -> list[str]:
     raw = clean_text(author_field)
     if not raw:
-        return ""
+        return []
 
     # BibTeX authors can appear as:
     # 1) "Last, First and Last, First"
@@ -104,9 +106,7 @@ def format_authors(author_field: str) -> str:
         names = [format_author_name(p) for p in raw.split(",")]
     names = [n for n in names if n]
 
-    if not names:
-        return ""
-    return ", ".join(names)
+    return names
 
 
 def to_text(value: object) -> str:
@@ -279,7 +279,7 @@ def build_publications_by_group(bib_path: Path) -> dict[str, list[dict]]:
         year = resolve_bib_value(extract_field(raw, "year"), string_map)
         doi = resolve_bib_value(extract_field(raw, "doi"), string_map)
         url = resolve_bib_value(extract_field(raw, "url"), string_map)
-        authors = format_authors(resolve_bib_value(extract_field(raw, "author"), string_map))
+        authors = parse_authors(resolve_bib_value(extract_field(raw, "author"), string_map))
 
         venue = resolve_bib_value(extract_field(raw, "journal"), string_map) or resolve_bib_value(
             extract_field(raw, "booktitle"), string_map
@@ -287,13 +287,6 @@ def build_publications_by_group(bib_path: Path) -> dict[str, list[dict]]:
         volume = resolve_bib_value(extract_field(raw, "volume"), string_map)
         number = resolve_bib_value(extract_field(raw, "number"), string_map)
         pages = resolve_bib_value(extract_field(raw, "pages"), string_map)
-
-        link = ""
-        if doi:
-            doi_url = doi if doi.startswith("http") else f"https://doi.org/{doi}"
-            link = f" ([doi]({doi_url}))"
-        elif url:
-            link = f" ([link]({url}))"
 
         venue_parts: list[str] = []
         if venue:
@@ -306,51 +299,43 @@ def build_publications_by_group(bib_path: Path) -> dict[str, list[dict]]:
             venue_parts.append(f"pp. {pages.replace('--', '-')}")
         venue_text = ", ".join(venue_parts)
 
-        header_parts: list[str] = []
-        if authors:
-            header_parts.append(authors)
-        if title:
-            header_parts.append(f'"{title}"')
+        if not title:
+            continue
 
-        detail_parts: list[str] = []
+        entry: dict[str, object] = {
+            "title": title,
+            "authors": authors,
+        }
         if venue_text:
-            detail_parts.append(venue_text)
+            entry["journal"] = venue_text
         if year:
-            detail_parts.append(year)
-        details = ", ".join(detail_parts)
-        if link:
-            details = f"{details}{link}" if details else link
+            entry["date"] = year
+        if doi:
+            entry["doi"] = doi if doi.startswith("http") else f"https://doi.org/{doi}"
+        elif url:
+            entry["url"] = url
 
-        line = ", ".join(header_parts)
-        if details:
-            line = f"{line}. {details}" if line else details
-        if title:
-            grouped[pubtype].append({"year": year, "line": line})
+        grouped[pubtype].append({"year": year, "entry": entry})
 
-    grouped_bullets: dict[str, list[dict]] = {}
+    grouped_entries: dict[str, list[dict]] = {}
     for key, heading in PUBLICATION_GROUPS:
         records = grouped.get(key, [])
+
         def sort_key(item: dict) -> tuple[int, str]:
             try:
-                return (-int(item.get("year", "0") or 0), item.get("line", ""))
+                title = item.get("entry", {}).get("title", "") if isinstance(item.get("entry"), dict) else ""
+                return (-int(item.get("year", "0") or 0), str(title))
             except ValueError:
-                return (0, item.get("line", ""))
+                title = item.get("entry", {}).get("title", "") if isinstance(item.get("entry"), dict) else ""
+                return (0, str(title))
 
         records.sort(key=sort_key)
-        bullets: list[dict] = []
-        for idx, rec in enumerate(records, start=1):
-            bullets.append({"bullet": f"{idx}. {rec['line']}"})
-        if not bullets:
-            bullets = [{"bullet": "No publications listed yet."}]
-        grouped_bullets[heading] = bullets
+        entries = [rec["entry"] for rec in records if isinstance(rec.get("entry"), dict)]
+        if not entries:
+            entries = [{"bullet": "No publications listed yet."}]
+        grouped_entries[heading] = entries
 
-    return grouped_bullets
-
-
-def split_section_chunks(items: list[dict], chunk_size: int) -> list[list[dict]]:
-    if chunk_size <= 0:
-        return [items]
-    return [items[i : i + chunk_size] for i in range(0, len(items), chunk_size)]
+    return grouped_entries
 
 
 def main() -> None:
@@ -361,12 +346,6 @@ def main() -> None:
     parser.add_argument("--grants", default="_data/grants.yml")
     parser.add_argument("--media", default="_data/media.yml")
     parser.add_argument("--bib", default="_bibliography/papers.bib")
-    parser.add_argument(
-        "--max-publications-per-section",
-        type=int,
-        default=12,
-        help="Maximum number of publication bullets in each PDF section before creating a continuation section.",
-    )
     args = parser.parse_args()
 
     in_path = Path(args.input)
@@ -392,16 +371,7 @@ def main() -> None:
 
     publications_by_group = build_publications_by_group(Path(args.bib))
     for _, heading in PUBLICATION_GROUPS:
-        bullets = publications_by_group.get(heading, [{"bullet": "No publications listed yet."}])
-        chunks = split_section_chunks(bullets, args.max_publications_per_section)
-        if len(chunks) == 1:
-            sections[heading] = chunks[0]
-            continue
-
-        # Split large sections to avoid cramped page breaks in PDF rendering.
-        sections[heading] = chunks[0]
-        for idx, chunk in enumerate(chunks[1:], start=2):
-            sections[f"{heading} (continued {idx})"] = chunk
+        sections[heading] = publications_by_group.get(heading, [{"bullet": "No publications listed yet."}])
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with out_path.open("w", encoding="utf-8") as f:

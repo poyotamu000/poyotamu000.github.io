@@ -5,3 +5,7 @@ design:
     size: a4
     show_footer: false
     show_top_note: false
+  sections:
+    allow_page_break: true
+  entries:
+    allow_page_break: true
