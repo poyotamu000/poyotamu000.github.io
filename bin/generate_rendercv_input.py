@@ -365,46 +365,15 @@ def build_publications_by_group(bib_path: Path, profile: str) -> dict[str, list[
                 return (0, str(title))
 
         records.sort(key=sort_key)
-        entries_raw = [rec["entry"] for rec in records if isinstance(rec.get("entry"), dict)]
-
-        # Convert structured entries to numbered bullet format for publications
-        entries: list[dict] = []
-        for idx, entry in enumerate(entries_raw, start=1):
-            if isinstance(entry, dict):
-                # Build the full publication text with numbering
-                parts: list[str] = []
-
-                # 1. Authors
-                if isinstance(entry.get("authors"), list) and entry["authors"]:
-                    parts.append(", ".join(entry["authors"]))
-
-                # 2. Title with quotes
-                if entry.get("title"):
-                    parts.append(f"\"{entry['title']}\"")
-
-                # 3. Journal/venue info
-                if entry.get("journal"):
-                    parts.append(entry["journal"])
-
-                # 4. Date/year
-                if entry.get("date"):
-                    parts.append(f"({entry['date']})")
-
-                # Join all parts and add numbering
-                text = " ".join(parts) if parts else "Publication entry"
-                bullet_text = f"{idx}. {text}"
-
-                # Add link if available
-                if entry.get("doi"):
-                    bullet_text += f" [link]({entry['doi']})"
-                elif entry.get("url"):
-                    bullet_text += f" [link]({entry['url']})"
-
-                entries.append({"bullet": bullet_text})
-
+        entries = [rec["entry"] for rec in records if isinstance(rec.get("entry"), dict)]
         if not entries:
             entries = [{"bullet": "No publications listed yet."}]
-        grouped_entries[heading] = entries
+            grouped_entries[heading] = entries
+            continue
+
+        # Keep RenderCV's structured publication format for stable page breaks,
+        # and append counts to headings so totals are immediately visible.
+        grouped_entries[f"{heading} ({len(entries)})"] = entries
 
     return grouped_entries
 
@@ -452,7 +421,8 @@ def main() -> None:
     for key, heading in PUBLICATION_GROUPS:
         if args.profile == "english" and key not in ENGLISH_PUBLICATION_GROUP_KEYS:
             continue
-        sections[heading] = publications_by_group.get(heading, [{"bullet": "No publications listed yet."}])
+        matched_heading = next((h for h in publications_by_group if h == heading or h.startswith(f"{heading} (")), heading)
+        sections[matched_heading] = publications_by_group.get(matched_heading, [{"bullet": "No publications listed yet."}])
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with out_path.open("w", encoding="utf-8") as f:
