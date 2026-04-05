@@ -17,7 +17,41 @@ layout: default
   <header class="post-header">
     <h1 class="post-title">
       {{ page.title }}
-      {% if page.cv_pdf %}
+      {% if page.cv_pdf_en or page.cv_pdf_bilingual %}
+        <span class="float-right" style="font-size: 0.9rem">
+          {% if page.cv_pdf_en %}
+            <a
+              {% if page.cv_pdf_en contains '://' %}
+                href="{{ page.cv_pdf_en }}"
+              {% else %}
+                href="{{ page.cv_pdf_en | relative_url }}"
+              {% endif %}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="English CV PDF"
+            >
+              <i class="fa-solid fa-file-pdf"></i> EN
+            </a>
+          {% endif %}
+          {% if page.cv_pdf_en and page.cv_pdf_bilingual %}
+            <span style="margin: 0 0.35rem">|</span>
+          {% endif %}
+          {% if page.cv_pdf_bilingual %}
+            <a
+              {% if page.cv_pdf_bilingual contains '://' %}
+                href="{{ page.cv_pdf_bilingual }}"
+              {% else %}
+                href="{{ page.cv_pdf_bilingual | relative_url }}"
+              {% endif %}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Bilingual CV PDF"
+            >
+              <i class="fa-solid fa-file-pdf"></i> EN+JP
+            </a>
+          {% endif %}
+        </span>
+      {% elsif page.cv_pdf %}
         <a
           {% if page.cv_pdf contains '://' %}
             href="{{ page.cv_pdf }}"

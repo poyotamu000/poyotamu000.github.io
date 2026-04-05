@@ -30,16 +30,9 @@ jobs:
       - name: Install RenderCV
         run: |
           pip install -r requirements.txt
-      - name: Build RenderCV input
+      - name: RenderCV (English + Bilingual)
         run: |
-          python3 bin/generate_rendercv_input.py --input _data/cv.yml --output _data/cv.rendercv.yml
-      - name: RenderCV
-        run: |
-          cv_file="_data/cv.rendercv.yml"
-          if [ ! -f "$cv_file" ]; then
-            echo "Generated RenderCV input was not found: $cv_file"
-            exit 1
-          fi
+          render_out_dir="assets/rendercv/rendercv_output"
           rendercv_dir=$(find assets -maxdepth 1 -type d -name "rendercv")
           if [ -z "$rendercv_dir" ]; then
             echo "No RenderCV config directory found!"
@@ -50,8 +43,31 @@ jobs:
             echo "Missing RenderCV config file!"
             exit 1
           fi
-          rendercv render $cv_file --settings $settings
-          rm -f _data/cv.rendercv.yml
+
+          render_profile () {
+            profile="$1"
+            tmp_input="_data/cv.rendercv.${profile}.yml"
+
+            python3 bin/generate_rendercv_input.py --input _data/cv.yml --output "$tmp_input" --profile "$profile"
+            if [ ! -f "$tmp_input" ]; then
+              echo "Generated RenderCV input was not found: $tmp_input"
+              exit 1
+            fi
+
+            rendercv render "$tmp_input" --settings "$settings"
+            latest_pdf=$(ls -t "$render_out_dir"/*_CV.pdf | head -n 1)
+            if [ -z "$latest_pdf" ]; then
+              echo "No rendered PDF found in $render_out_dir"
+              exit 1
+            fi
+
+            base_name=$(basename "$latest_pdf" .pdf)
+            mv "$latest_pdf" "$render_out_dir/${base_name}_${profile}.pdf"
+            rm -f "$tmp_input"
+          }
+
+          render_profile "english"
+          render_profile "bilingual"
           rm assets/rendercv/rendercv_output/*.typ
       - name: Upload rendercv_output as an artifact
         uses: actions/upload-artifact@v4

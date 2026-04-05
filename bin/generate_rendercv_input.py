@@ -26,6 +26,12 @@ PUBLICATION_GROUPS = [
 ]
 
 
+ENGLISH_PUBLICATION_GROUP_KEYS = {
+    "international_journal",
+    "international_conference",
+}
+
+
 def load_yaml(path: Path) -> dict:
     with path.open("r", encoding="utf-8") as f:
         data = yaml.safe_load(f)
@@ -117,19 +123,36 @@ def to_text(value: object) -> str:
     return str(value).strip()
 
 
+def strip_japanese_annotation(text: str) -> str:
+    value = to_text(text)
+    if not value:
+        return ""
+    # Remove patterns like:
+    # - ", in Japanese ..."
+    # - "(in Japanese, ...)"
+    value = re.sub(r"\s*,\s*in\s+japanese\b.*$", "", value, flags=re.IGNORECASE)
+    value = re.sub(r"\s*\(\s*in\s+japanese\s*,\s*.*?\)", "", value, flags=re.IGNORECASE)
+    value = re.sub(r"\s{2,}", " ", value).strip(" ,")
+    return value
+
+
 def format_link(url: str | None) -> str:
     if not url:
         return ""
     return f" ([link]({url}))"
 
 
-def build_awards_section(awards: list[dict]) -> list[dict]:
+def build_awards_section(awards: list[dict], profile: str) -> list[dict]:
     bullets: list[dict] = []
     for item in awards:
         title = to_text(item.get("title", ""))
         awarder = to_text(item.get("awarder", ""))
         date = to_text(item.get("date", ""))
         url = to_text(item.get("url", ""))
+
+        if profile == "english":
+            title = strip_japanese_annotation(title)
+            awarder = strip_japanese_annotation(awarder)
 
         parts = [p for p in [date, title, awarder] if p]
         if not parts:
@@ -142,11 +165,15 @@ def build_awards_section(awards: list[dict]) -> list[dict]:
     return bullets
 
 
-def build_grants_section(grants: list[dict]) -> list[dict]:
+def build_grants_section(grants: list[dict], profile: str) -> list[dict]:
     bullets: list[dict] = []
     for item in grants:
         title = to_text(item.get("title", ""))
         awarder = to_text(item.get("awarder", ""))
+        if profile == "english":
+            title = strip_japanese_annotation(title)
+            awarder = strip_japanese_annotation(awarder)
+
         start = to_text(item.get("start_date", ""))
         end = to_text(item.get("end_date", ""))
 
@@ -176,12 +203,15 @@ def build_grants_section(grants: list[dict]) -> list[dict]:
     return bullets
 
 
-def build_media_section(media: list[dict]) -> list[dict]:
+def build_media_section(media: list[dict], profile: str) -> list[dict]:
     bullets: list[dict] = []
     for item in media:
         title = to_text(item.get("title", ""))
         date = to_text(item.get("date", ""))
         url = to_text(item.get("url", ""))
+
+        if profile == "english":
+            title = strip_japanese_annotation(title)
 
         if not title and not date:
             continue
@@ -263,12 +293,15 @@ def split_bib_entries(content: str) -> list[str]:
     return entries
 
 
-def build_publications_by_group(bib_path: Path) -> dict[str, list[dict]]:
+def build_publications_by_group(bib_path: Path, profile: str) -> dict[str, list[dict]]:
     content = bib_path.read_text(encoding="utf-8")
     raw_entries = split_bib_entries(content)
     string_map = parse_bib_strings(content)
 
-    grouped: dict[str, list[dict]] = {k: [] for k, _ in PUBLICATION_GROUPS}
+    allowed_group_keys = {
+        key for key, _ in PUBLICATION_GROUPS if profile != "english" or key in ENGLISH_PUBLICATION_GROUP_KEYS
+    }
+    grouped: dict[str, list[dict]] = {k: [] for k, _ in PUBLICATION_GROUPS if k in allowed_group_keys}
 
     for raw in raw_entries:
         pubtype = clean_text(extract_field(raw, "pubtype")).lower()
@@ -319,6 +352,8 @@ def build_publications_by_group(bib_path: Path) -> dict[str, list[dict]]:
 
     grouped_entries: dict[str, list[dict]] = {}
     for key, heading in PUBLICATION_GROUPS:
+        if key not in grouped:
+            continue
         records = grouped.get(key, [])
 
         def sort_key(item: dict) -> tuple[int, str]:
@@ -346,6 +381,12 @@ def main() -> None:
     parser.add_argument("--grants", default="_data/grants.yml")
     parser.add_argument("--media", default="_data/media.yml")
     parser.add_argument("--bib", default="_bibliography/papers.bib")
+    parser.add_argument(
+        "--profile",
+        choices=["english", "bilingual"],
+        default="bilingual",
+        help="Output profile for RenderCV input generation.",
+    )
     args = parser.parse_args()
 
     in_path = Path(args.input)
@@ -361,16 +402,20 @@ def main() -> None:
     grants = load_yaml(Path(args.grants)).get("entries", [])
     media = load_yaml(Path(args.media)).get("entries", [])
 
-    sections["Awards"] = build_awards_section(awards)
-    sections["Grants-in-Aid and Scholarship"] = build_grants_section(grants)
-    sections["Media"] = build_media_section(media)
+    sections["Awards"] = build_awards_section(awards, args.profile)
+    sections["Grants-in-Aid and Scholarship"] = build_grants_section(grants, args.profile)
+    sections["Media"] = build_media_section(media, args.profile)
 
     # Remove any legacy publication section names, then add categorized sections.
     for key in ["Publications", "Selected Publications"]:
         sections.pop(key, None)
-
-    publications_by_group = build_publications_by_group(Path(args.bib))
     for _, heading in PUBLICATION_GROUPS:
+        sections.pop(heading, None)
+
+    publications_by_group = build_publications_by_group(Path(args.bib), args.profile)
+    for key, heading in PUBLICATION_GROUPS:
+        if args.profile == "english" and key not in ENGLISH_PUBLICATION_GROUP_KEYS:
+            continue
         sections[heading] = publications_by_group.get(heading, [{"bullet": "No publications listed yet."}])
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
