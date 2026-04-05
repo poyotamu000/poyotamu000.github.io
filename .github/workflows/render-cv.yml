@@ -6,6 +6,11 @@ on:
       - master
     paths:
       - "_data/cv.yml"
+      - "_data/awards.yml"
+      - "_data/grants.yml"
+      - "_data/media.yml"
+      - "_bibliography/papers.bib"
+      - "bin/generate_rendercv_input.py"
       - "assets/rendercv/design.yaml"
       - "assets/rendercv/locale.yaml"
       - "assets/rendercv/settings.yaml"
@@ -25,11 +30,14 @@ jobs:
       - name: Install RenderCV
         run: |
           pip install -r requirements.txt
+      - name: Build RenderCV input
+        run: |
+          python bin/generate_rendercv_input.py --input _data/cv.yml --output /tmp/cv.rendercv.yml
       - name: RenderCV
         run: |
-          cv_file=$(find _data  -maxdepth 1 -type f \( -name "cv.yaml" -o -name "cv.yml" \))
-          if [ -z "$cv_file" ]; then
-            echo "No cv.yml file found!"
+          cv_file="/tmp/cv.rendercv.yml"
+          if [ ! -f "$cv_file" ]; then
+            echo "Generated RenderCV input was not found: $cv_file"
             exit 1
           fi
           rendercv_dir=$(find assets -maxdepth 1 -type d -name "rendercv")
