@@ -193,7 +193,7 @@ def split_bib_entries(content: str) -> list[str]:
     return entries
 
 
-def build_publications_section(bib_path: Path) -> list[dict]:
+def build_publications_by_group(bib_path: Path) -> dict[str, list[dict]]:
     content = bib_path.read_text(encoding="utf-8")
     raw_entries = split_bib_entries(content)
 
@@ -216,16 +216,19 @@ def build_publications_section(bib_path: Path) -> list[dict]:
         elif url:
             link = f" ([link]({url}))"
 
-        line = f"{year} - {title}{link}" if year else f"{title}{link}"
+        venue = clean_text(extract_field(raw, "journal")) or clean_text(extract_field(raw, "booktitle"))
+        if year and venue:
+            line = f"{year} - {title}, {venue}{link}"
+        elif year:
+            line = f"{year} - {title}{link}"
+        else:
+            line = f"{title}{link}"
         if title:
             grouped[pubtype].append({"year": year, "line": line})
 
-    bullets: list[dict] = []
+    grouped_bullets: dict[str, list[dict]] = {}
     for key, heading in PUBLICATION_GROUPS:
         records = grouped.get(key, [])
-        if not records:
-            continue
-
         def sort_key(item: dict) -> tuple[int, str]:
             try:
                 return (-int(item.get("year", "0") or 0), item.get("line", ""))
@@ -233,11 +236,14 @@ def build_publications_section(bib_path: Path) -> list[dict]:
                 return (0, item.get("line", ""))
 
         records.sort(key=sort_key)
-        bullets.append({"bullet": f"**{heading}**"})
-        for rec in records:
-            bullets.append({"bullet": rec["line"]})
+        bullets: list[dict] = []
+        for idx, rec in enumerate(records, start=1):
+            bullets.append({"bullet": f"{idx}. {rec['line']}"})
+        if not bullets:
+            bullets = [{"bullet": "No publications listed yet."}]
+        grouped_bullets[heading] = bullets
 
-    return bullets
+    return grouped_bullets
 
 
 def main() -> None:
@@ -266,7 +272,14 @@ def main() -> None:
     sections["Awards"] = build_awards_section(awards)
     sections["Grants-in-Aid and Scholarship"] = build_grants_section(grants)
     sections["Media"] = build_media_section(media)
-    sections["Publications"] = build_publications_section(Path(args.bib))
+
+    # Remove any legacy publication section names, then add categorized sections.
+    for key in ["Publications", "Selected Publications"]:
+        sections.pop(key, None)
+
+    publications_by_group = build_publications_by_group(Path(args.bib))
+    for _, heading in PUBLICATION_GROUPS:
+        sections[heading] = publications_by_group.get(heading, [{"bullet": "No publications listed yet."}])
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with out_path.open("w", encoding="utf-8") as f:
