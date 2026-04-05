@@ -230,7 +230,17 @@ layout: default
         <div class="card mt-3 p-3">
           <h3 class="card-title font-weight-medium">Publications</h3>
           <div>
-            {% bibliography --template bib-compact --group_by none %}
+            <h4 class="mt-2">International Journal Papers</h4>
+            {% bibliography --template bib-compact --group_by none --query @*[pubtype=international_journal] %}
+
+            <h4 class="mt-3">International Conference Proceedings (Peer Reviewed)</h4>
+            {% bibliography --template bib-compact --group_by none --query @*[pubtype=international_conference] %}
+
+            <h4 class="mt-3">Domestic Journal Papers</h4>
+            {% bibliography --template bib-compact --group_by none --query @*[pubtype=domestic_journal] %}
+
+            <h4 class="mt-3">Domestic Conference Proceedings</h4>
+            {% bibliography --template bib-compact --group_by none --query @*[pubtype=domestic_conference] %}
           </div>
         </div>
 
