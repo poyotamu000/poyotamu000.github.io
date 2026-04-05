@@ -323,8 +323,7 @@ def build_publications_by_group(bib_path: Path) -> dict[str, list[dict]]:
 
         line = ", ".join(header_parts)
         if details:
-            # Two-line layout improves readability and reduces page-break crowding.
-            line = f"{line}  \n{details}" if line else details
+            line = f"{line}. {details}" if line else details
         if title:
             grouped[pubtype].append({"year": year, "line": line})
 
@@ -365,7 +364,7 @@ def main() -> None:
     parser.add_argument(
         "--max-publications-per-section",
         type=int,
-        default=10,
+        default=12,
         help="Maximum number of publication bullets in each PDF section before creating a continuation section.",
     )
     args = parser.parse_args()
