@@ -39,6 +39,14 @@ def clean_text(value: str) -> str:
     return text
 
 
+def to_text(value: object) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, str):
+        return value.strip()
+    return str(value).strip()
+
+
 def format_link(url: str | None) -> str:
     if not url:
         return ""
@@ -48,10 +56,10 @@ def format_link(url: str | None) -> str:
 def build_awards_section(awards: list[dict]) -> list[dict]:
     bullets: list[dict] = []
     for item in awards:
-        title = item.get("title", "").strip()
-        awarder = item.get("awarder", "").strip()
-        date = item.get("date", "").strip()
-        url = item.get("url", "").strip()
+        title = to_text(item.get("title", ""))
+        awarder = to_text(item.get("awarder", ""))
+        date = to_text(item.get("date", ""))
+        url = to_text(item.get("url", ""))
 
         parts = [p for p in [date, title, awarder] if p]
         if not parts:
@@ -67,10 +75,10 @@ def build_awards_section(awards: list[dict]) -> list[dict]:
 def build_grants_section(grants: list[dict]) -> list[dict]:
     bullets: list[dict] = []
     for item in grants:
-        title = item.get("title", "").strip()
-        awarder = item.get("awarder", "").strip()
-        start = item.get("start_date", "").strip()
-        end = item.get("end_date", "").strip()
+        title = to_text(item.get("title", ""))
+        awarder = to_text(item.get("awarder", ""))
+        start = to_text(item.get("start_date", ""))
+        end = to_text(item.get("end_date", ""))
 
         period = ""
         if start and end:
@@ -101,9 +109,9 @@ def build_grants_section(grants: list[dict]) -> list[dict]:
 def build_media_section(media: list[dict]) -> list[dict]:
     bullets: list[dict] = []
     for item in media:
-        title = item.get("title", "").strip()
-        date = item.get("date", "").strip()
-        url = item.get("url", "").strip()
+        title = to_text(item.get("title", ""))
+        date = to_text(item.get("date", ""))
+        url = to_text(item.get("url", ""))
 
         if not title and not date:
             continue
