@@ -226,6 +226,14 @@ layout: default
           </div>
         {% endif %}
 
+        <a class="anchor" id="publications"></a>
+        <div class="card mt-3 p-3">
+          <h3 class="card-title font-weight-medium">Publications</h3>
+          <div>
+            {% bibliography --template bib-compact --group_by none %}
+          </div>
+        </div>
+
         {% comment %} Now render all remaining custom sections {% endcomment %}
         {% for section_pair in cv.sections %}
           {% assign section_title = section_pair[0] %}
@@ -243,6 +251,8 @@ layout: default
             or section_title == 'Interests'
             or section_title == 'Academic Interests'
             or section_title == 'Research Interests'
+            or section_title == 'Publications'
+            or section_title == 'Selected Publications'
           %}
             {% continue %}
           {% endif %}
