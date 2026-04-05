@@ -106,9 +106,7 @@ def format_authors(author_field: str) -> str:
 
     if not names:
         return ""
-    if len(names) <= 8:
-        return ", ".join(names)
-    return ", ".join(names[:8]) + ", et al."
+    return ", ".join(names)
 
 
 def to_text(value: object) -> str:
@@ -305,20 +303,28 @@ def build_publications_by_group(bib_path: Path) -> dict[str, list[dict]]:
         if number:
             venue_parts.append(f"no. {number}")
         if pages:
-            venue_parts.append(f"pp. {pages}")
+            venue_parts.append(f"pp. {pages.replace('--', '-')}")
         venue_text = ", ".join(venue_parts)
 
-        body_parts: list[str] = []
+        header_parts: list[str] = []
         if authors:
-            body_parts.append(authors)
+            header_parts.append(authors)
         if title:
-            body_parts.append(f'"{title}"')
-        if venue_text:
-            body_parts.append(venue_text)
-        if year:
-            body_parts.append(year)
+            header_parts.append(f'"{title}"')
 
-        line = ", ".join(body_parts) + link if body_parts else link
+        detail_parts: list[str] = []
+        if venue_text:
+            detail_parts.append(venue_text)
+        if year:
+            detail_parts.append(year)
+        details = ", ".join(detail_parts)
+        if link:
+            details = f"{details}{link}" if details else link
+
+        line = ", ".join(header_parts)
+        if details:
+            # Two-line layout improves readability and reduces page-break crowding.
+            line = f"{line}  \n{details}" if line else details
         if title:
             grouped[pubtype].append({"year": year, "line": line})
 
