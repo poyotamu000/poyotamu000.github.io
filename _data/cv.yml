@@ -27,6 +27,11 @@ cv:
     Summary:
       - bullet: a Project Assistant Professor at the University of Tokyo, working on the intersection of biological understanding and intelligent machine design, with a focus on biomimetic robotics to investigate biological systems and their underlying principles.
 
+    Research Interests:
+      - name: Robotics
+        icon: fa-solid fa-tag
+        keywords: "Biomimetics, Soft Robotics, Musculoskeletal Humanoid, biological System, Neuroscience, Physiology, Embodied Intelligence, Constructive Understanding, Complex Emergent Systems"
+
     Education:
       - institution: The University of Tokyo
         location: Tokyo, Japan
@@ -162,23 +167,18 @@ cv:
         url: https://doi.org/10.1007/978-3-031-44851-5_9
         summary: "Category: Musculoskeletal Humanoid | Abstract: This work details the system architecture of the Musashi-W musculoskeletal wheeled robot and demonstrates integration of multiple hardware components for stable real-world task execution."
 
-    Skills:
-      - name: Robotics
-        level: Master
-        icon: fa-solid fa-hashtag
-        keywords: "Biomimetics, Soft Robotics, Humanoid, System Integration, Machine Learning, Mechanical Design, Software Development"
+    # Skills:
+    #   - name: Robotics
+    #     level: Master
+    #     icon: fa-solid fa-hashtag
+    #     keywords: "Biomimetics, Soft Robotics, Humanoid, System Integration, Machine Learning, Mechanical Design, Software Development"
 
-    Languages:
-      - name: Japanese
-        summary: "Native speaker"
+    # Languages:
+    #   - name: Japanese
+    #     summary: "Native speaker"
 
-      - name: English
-        summary: "Fluent"
-
-    Interests:
-      - name: Robotics
-        icon: fa-solid fa-tag
-        keywords: "Biomimetics, Soft Robotics, Musculoskeletal Humanoid, biological System, Neuroscience, Physiology, Embodied Intelligence, Constructive Understanding, Complex Emergent Systems"
+    #   - name: English
+    #     summary: "Fluent"
 
     # Certificates:
     #   - name: Machine Learning

@@ -146,6 +146,22 @@ layout: default
           </div>
         {% endif %}
 
+        {% assign research_interests = cv.sections['Research Interests']
+          | default: cv.sections.Interests
+          | default: cv.sections['Academic Interests']
+          | default: empty_array
+        %}
+        {% if research_interests.size > 0 %}
+          <a class="anchor" id="research-interests"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">Research Interests</h3>
+            <div>
+              {% assign entries = research_interests %}
+              {% include cv/interests.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
         {% comment %} First, combine Experience and Volunteer entries {% endcomment %}
         {% assign empty_array = '' | split: ',' %}
         {% assign exp = cv.sections.Experience | default: empty_array %}
@@ -158,6 +174,18 @@ layout: default
             <div>
               {% assign entries = combined_experience %}
               {% include cv/experience.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% assign education_entries = cv.sections.Education | default: empty_array %}
+        {% if education_entries.size > 0 %}
+          <a class="anchor" id="education"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">Education</h3>
+            <div>
+              {% assign entries = education_entries %}
+              {% include cv/education.liquid %}
             </div>
           </div>
         {% endif %}
@@ -198,19 +226,23 @@ layout: default
           </div>
         {% endif %}
 
-        {% comment %} Now render all other sections except Experience and Volunteer {% endcomment %}
+        {% comment %} Now render all remaining custom sections {% endcomment %}
         {% for section_pair in cv.sections %}
           {% assign section_title = section_pair[0] %}
           {% assign section_entries = section_pair[1] %}
 
-          {% comment %} Skip Experience and Volunteer as we've already processed them combined {% endcomment %}
+          {% comment %} Skip sections already rendered above {% endcomment %}
           {% if section_title == 'Experience'
             or section_title == 'Volunteer'
             or section_title == 'Summary'
+            or section_title == 'Education'
             or section_title == 'Awards'
             or section_title == 'Honors and Awards'
             or section_title == 'Grants-in-Aid and Scholarship'
             or section_title == 'Media'
+            or section_title == 'Interests'
+            or section_title == 'Academic Interests'
+            or section_title == 'Research Interests'
           %}
             {% continue %}
           {% endif %}
@@ -231,7 +263,7 @@ layout: default
               {% elsif section_title == 'Languages' %}
                 {% assign entries = section_entries %}
                 {% include cv/languages.liquid %}
-              {% elsif section_title == 'Interests' or section_title == 'Academic Interests' %}
+              {% elsif section_title == 'Interests' or section_title == 'Academic Interests' or section_title == 'Research Interests' %}
                 {% assign entries = section_entries %}
                 {% include cv/interests.liquid %}
               {% elsif section_title == 'Certificates' %}
