@@ -97,29 +97,10 @@ cv:
         start_date: 2022-05-01
         end_date: 2026-03-31
 
-    Awards:
-      - bullet: "2026-03-24 - Valedictorian (Graduation Ceremony Representative), The University of Tokyo ([link](https://www.u-tokyo.ac.jp/focus/en/articles/z1301_00062.html))"
-      - bullet: "2025-03-18 - in Japanese, 2024年度計測自動制御学会 学術奨励賞, 計測自動制御学会 ([link](https://www.sice.jp/info/info_press/press_20250512-2.html))"
-      - bullet: "2024-01-23 - in Japanese, 第24回計測自動制御学会システムインテグレーション部門講演会 優秀講演賞, 計測自動制御学会 ([link](https://sice-si.org/si2023/))"
-      - bullet: "2023-09-13 - in Japanese, 第3回ロボティクスシンポジア優秀研究・技術賞, 日本ロボット学会 ([link](https://www.rsj.or.jp/info/awards/category/ykg_rs/))"
-
-    Grants-in-Aid and Scholarship:
-      - bullet: "2024-04 to 2026-03 - JSPS Research Fellowship for Young Scientists (DC2), JSPS (Japan Society for the Promotion of Science)"
-      - bullet: "2023-04 to 2024-03 - The University of Tokyo Advanced Human Resource Development Leading Green Transformation (GX) (SPRING GX) Project student, Japan Science and Technology Agency (JST)"
-      - bullet: "2023-04 to 2024-03 - 公益信託岩井久雄記念東京奨学育英基金"
-      - bullet: "2022-04 to 2023-03 - 公益財団林レオロジー記念財団奨学金"
-      - bullet: "2021-04 to 2022-03 - Iwadare Scholarship Foundation Scholarship (in Japanese, 公益財団法人岩垂奨学会)"
-      - bullet: "2019-04 to 2021-03 - 公益財団林レオロジー記念財団奨学金"
-      - bullet: "2019-04 to 2023-03 - SINNIHON SCHOLARSHIP FOUNDATION Scholarship (in Japanese, 公益財団法人新日本奨学会奨学金)"
-
-    Media:
-      - bullet: "2026-03-24 - AY 2025 Diploma Presentation Ceremony held (Valedictorian), The University of Tokyo ([link](https://www.u-tokyo.ac.jp/focus/en/articles/z1301_00062.html))"
-
-    Publications:
-      - bullet: "International Journal Papers: [See full list](https://poyotamu000.github.io/publications/#international-journal-papers)"
-      - bullet: "International Conference Proceedings (Peer Reviewed): [See full list](https://poyotamu000.github.io/publications/#international-conference-proceedings-peer-reviewed)"
-      - bullet: "Domestic Journal Papers: [See full list](https://poyotamu000.github.io/publications/#domestic-journal-papers)"
-      - bullet: "Domestic Conference Proceedings: [See full list](https://poyotamu000.github.io/publications/#domestic-conference-proceedings)"
+    # Awards / Grants-in-Aid and Scholarship / Media / Publications
+    # are auto-synced for both website and RenderCV PDF via:
+    # _data/awards.yml, _data/grants.yml, _data/media.yml, _bibliography/papers.bib
+    # and bin/generate_rendercv_input.py.
 
     # Volunteer:
     #   - company: People's Climate March
