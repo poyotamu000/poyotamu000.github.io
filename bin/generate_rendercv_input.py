@@ -39,6 +39,78 @@ def clean_text(value: str) -> str:
     return text
 
 
+def parse_bib_strings(content: str) -> dict[str, str]:
+    strings: dict[str, str] = {}
+    for match in re.finditer(r"@string\s*\{\s*([^=\s]+)\s*=\s*(.+?)\}\s*", content, flags=re.IGNORECASE | re.DOTALL):
+        key = clean_text(match.group(1)).lower()
+        raw_val = match.group(2).strip().rstrip(",")
+        if raw_val.startswith('"') and raw_val.endswith('"'):
+            val = raw_val[1:-1]
+        elif raw_val.startswith("{") and raw_val.endswith("}"):
+            val = raw_val[1:-1]
+        else:
+            val = raw_val
+        strings[key] = clean_text(val)
+    return strings
+
+
+def resolve_bib_value(value: str, strings: dict[str, str]) -> str:
+    val = clean_text(value)
+    if not val:
+        return ""
+
+    # Resolve simple token or token concatenation (token # token).
+    parts = [p.strip() for p in val.split("#")]
+    resolved_parts: list[str] = []
+    for part in parts:
+        if not part:
+            continue
+        token = part.strip('"').strip().lower()
+        resolved_parts.append(strings.get(token, part.strip('"').strip()))
+
+    return clean_text(" ".join(resolved_parts))
+
+
+def format_author_name(name: str) -> str:
+    value = clean_text(name)
+    if not value:
+        return ""
+    if "," in value:
+        parts = [p.strip() for p in value.split(",") if p.strip()]
+        if len(parts) >= 2:
+            return f"{parts[1]} {parts[0]}"
+    return value
+
+
+def format_authors(author_field: str) -> str:
+    raw = clean_text(author_field)
+    if not raw:
+        return ""
+
+    # BibTeX authors can appear as:
+    # 1) "Last, First and Last, First"
+    # 2) "First Last, First Last, ... and First Last"
+    # Handle mixed comma + and notation first.
+    if " and " in raw:
+        and_split = [p.strip() for p in raw.split(" and ") if p.strip()]
+        # If any chunk already contains multiple commas, the field is likely
+        # comma-separated names plus a trailing "and last author".
+        if any(part.count(",") > 1 for part in and_split):
+            normalized = raw.replace(" and ", ",")
+            names = [format_author_name(p.strip()) for p in normalized.split(",")]
+        else:
+            names = [format_author_name(p) for p in and_split]
+    else:
+        names = [format_author_name(p) for p in raw.split(",")]
+    names = [n for n in names if n]
+
+    if not names:
+        return ""
+    if len(names) <= 8:
+        return ", ".join(names)
+    return ", ".join(names[:8]) + ", et al."
+
+
 def to_text(value: object) -> str:
     if value is None:
         return ""
@@ -196,6 +268,7 @@ def split_bib_entries(content: str) -> list[str]:
 def build_publications_by_group(bib_path: Path) -> dict[str, list[dict]]:
     content = bib_path.read_text(encoding="utf-8")
     raw_entries = split_bib_entries(content)
+    string_map = parse_bib_strings(content)
 
     grouped: dict[str, list[dict]] = {k: [] for k, _ in PUBLICATION_GROUPS}
 
@@ -204,10 +277,18 @@ def build_publications_by_group(bib_path: Path) -> dict[str, list[dict]]:
         if pubtype not in grouped:
             continue
 
-        title = clean_text(extract_field(raw, "title"))
-        year = clean_text(extract_field(raw, "year"))
-        doi = clean_text(extract_field(raw, "doi"))
-        url = clean_text(extract_field(raw, "url"))
+        title = resolve_bib_value(extract_field(raw, "title"), string_map)
+        year = resolve_bib_value(extract_field(raw, "year"), string_map)
+        doi = resolve_bib_value(extract_field(raw, "doi"), string_map)
+        url = resolve_bib_value(extract_field(raw, "url"), string_map)
+        authors = format_authors(resolve_bib_value(extract_field(raw, "author"), string_map))
+
+        venue = resolve_bib_value(extract_field(raw, "journal"), string_map) or resolve_bib_value(
+            extract_field(raw, "booktitle"), string_map
+        )
+        volume = resolve_bib_value(extract_field(raw, "volume"), string_map)
+        number = resolve_bib_value(extract_field(raw, "number"), string_map)
+        pages = resolve_bib_value(extract_field(raw, "pages"), string_map)
 
         link = ""
         if doi:
@@ -216,13 +297,28 @@ def build_publications_by_group(bib_path: Path) -> dict[str, list[dict]]:
         elif url:
             link = f" ([link]({url}))"
 
-        venue = clean_text(extract_field(raw, "journal")) or clean_text(extract_field(raw, "booktitle"))
-        if year and venue:
-            line = f"{year} - {title}, {venue}{link}"
-        elif year:
-            line = f"{year} - {title}{link}"
-        else:
-            line = f"{title}{link}"
+        venue_parts: list[str] = []
+        if venue:
+            venue_parts.append(venue)
+        if volume:
+            venue_parts.append(f"vol. {volume}")
+        if number:
+            venue_parts.append(f"no. {number}")
+        if pages:
+            venue_parts.append(f"pp. {pages}")
+        venue_text = ", ".join(venue_parts)
+
+        body_parts: list[str] = []
+        if authors:
+            body_parts.append(authors)
+        if title:
+            body_parts.append(f'"{title}"')
+        if venue_text:
+            body_parts.append(venue_text)
+        if year:
+            body_parts.append(year)
+
+        line = ", ".join(body_parts) + link if body_parts else link
         if title:
             grouped[pubtype].append({"year": year, "line": line})
 
