@@ -43,7 +43,7 @@ cv:
         # highlights:
         #   - Relativity
         #   - Description 2.
-      - company: JSPS (Japan Society for the Promotion of Science), (in japanese 日本学術振興会)
+      - company: JSPS (Japan Society for the Promotion of Science) #, (in japanese 日本学術振興会)
         position: JSPS Research Fellowships for young students (DC2)
         location: Tokyo, Japan
         start_date: 2024-04-01
