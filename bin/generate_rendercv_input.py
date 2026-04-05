@@ -329,7 +329,11 @@ def build_publications_by_group(bib_path: Path, profile: str) -> dict[str, list[
         if number:
             venue_parts.append(f"no. {number}")
         if pages:
-            venue_parts.append(f"pp. {pages.replace('--', '-')}")
+            formatted_pages = pages.replace("--", "-")
+            if pubtype == "domestic_conference":
+                venue_parts.append(formatted_pages)
+            else:
+                venue_parts.append(f"pp. {formatted_pages}")
         venue_text = ", ".join(venue_parts)
 
         if not title:
