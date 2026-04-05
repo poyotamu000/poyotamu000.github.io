@@ -28,9 +28,9 @@ cv:
       - bullet: a Project Assistant Professor at the University of Tokyo, working on the intersection of biological understanding and intelligent machine design, with a focus on biomimetic robotics to investigate biological systems and their underlying principles.
 
     Research Interests:
-      - name: Biomimetic Robotics, Soft Robotics, Musculoskeletal Humanoid, biological System, Neuroscience, Physiology, Embodied Intelligence, Constructive Understanding, Complex Emergent Systems
+      - name: Biomimetic Robotics, Soft Robotics, Musculoskeletal Humanoid, Biological System, Neuroscience, Physiology, Embodied Intelligence, Constructive Understanding, Complex Emergent Systems
         icon: fa-solid fa-tag
-        # keywords: "Biomimetics, Soft Robotics, Musculoskeletal Humanoid, biological System, Neuroscience, Physiology, Embodied Intelligence, Constructive Understanding, Complex Emergent Systems"
+        # keywords: "Biomimetics, Soft Robotics, Musculoskeletal Humanoid, Biological System, Neuroscience, Physiology, Embodied Intelligence, Constructive Understanding, Complex Emergent Systems"
 
     Experience:
       - company: The University of Tokyo
