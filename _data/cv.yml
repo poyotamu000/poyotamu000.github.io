@@ -32,6 +32,35 @@ cv:
         icon: fa-solid fa-tag
         # keywords: "Biomimetics, Soft Robotics, Musculoskeletal Humanoid, biological System, Neuroscience, Physiology, Embodied Intelligence, Constructive Understanding, Complex Emergent Systems"
 
+    Experience:
+      - company: The University of Tokyo
+        position: Project Assistant Professor
+        location: Tokyo, Japan
+        url: http://www.jsk.t.u-tokyo.ac.jp/
+        start_date: 2026-04-01
+        # end_date: 2030
+        summary: Working at JSK Robotics Laboratory (Creative Informatics, Information Science and Technology).
+        # highlights:
+        #   - Relativity
+        #   - Description 2.
+      - company: JSPS (Japan Society for the Promotion of Science), (in japanese 日本学術振興会)
+        position: JSPS Research Fellowships for young students (DC2)
+        location: Tokyo, Japan
+        start_date: 2024-04-01
+        end_date: 2026-03-31
+      - company: Japan Science and Technology Agency (JST)
+        position: The University of Tokyo "Advanced Human Resource Development Leading Green Transformation (GX) (SPRING GX)" Project student
+        location: Tokyo, Japan
+        start_date: 2023-04-01
+        end_date: 2024-03-31
+        highlights:
+          - Description 1. JST Support for Pioneering Research Initiated by the Next Generation (SPRING) Program
+      - company: The University of Tokyo
+        position: Research Assistant
+        location: Tokyo, Japan
+        start_date: 2022-05-01
+        end_date: 2026-03-31
+
     Education:
       - institution: The University of Tokyo
         location: Tokyo, Japan
@@ -67,35 +96,6 @@ cv:
         area: Medicine
         degree: M.D. Program (withdrawn)
         end_date: 2017-03-31
-
-    Experience:
-      - company: The University of Tokyo
-        position: Project Assistant Professor
-        location: Tokyo, Japan
-        url: http://www.jsk.t.u-tokyo.ac.jp/
-        start_date: 2026-04-01
-        # end_date: 2030
-        summary: Working at JSK Robotics Laboratory (Creative Informatics, Information Science and Technology).
-        # highlights:
-        #   - Relativity
-        #   - Description 2.
-      - company: JSPS (Japan Society for the Promotion of Science), (in japanese 日本学術振興会)
-        position: JSPS Research Fellowships for young students (DC2)
-        location: Tokyo, Japan
-        start_date: 2024-04-01
-        end_date: 2026-03-31
-      - company: Japan Science and Technology Agency (JST)
-        position: The University of Tokyo "Advanced Human Resource Development Leading Green Transformation (GX) (SPRING GX)" Project student
-        location: Tokyo, Japan
-        start_date: 2023-04-01
-        end_date: 2024-03-31
-        highlights:
-          - Description 1. JST Support for Pioneering Research Initiated by the Next Generation (SPRING) Program
-      - company: The University of Tokyo
-        position: Research Assistant
-        location: Tokyo, Japan
-        start_date: 2022-05-01
-        end_date: 2026-03-31
 
     # Awards / Grants-in-Aid and Scholarship / Media / Publications
     # are auto-synced for both website and RenderCV PDF via:

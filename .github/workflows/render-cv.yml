@@ -47,6 +47,11 @@ jobs:
           render_profile () {
             profile="$1"
             tmp_input="_data/cv.rendercv.${profile}.yml"
+            target_pdf="$render_out_dir/cv_${profile}.pdf"
+
+            marker_file=$(mktemp)
+            # Ensure marker is strictly older than generated outputs.
+            sleep 1
 
             python3 bin/generate_rendercv_input.py --input _data/cv.yml --output "$tmp_input" --profile "$profile"
             if [ ! -f "$tmp_input" ]; then
@@ -55,15 +60,18 @@ jobs:
             fi
 
             rendercv render "$tmp_input" --settings "$settings"
-            latest_pdf=$(ls -t "$render_out_dir"/*_CV.pdf | head -n 1)
-            if [ -z "$latest_pdf" ]; then
-              echo "No rendered PDF found in $render_out_dir"
+            new_pdf=$(find "$render_out_dir" -maxdepth 1 -type f -name "*_CV.pdf" -newer "$marker_file" | head -n 1)
+            if [ -z "$new_pdf" ]; then
+              new_pdf=$(ls -t "$render_out_dir"/*_CV.pdf 2>/dev/null | head -n 1)
+            fi
+            if [ -z "$new_pdf" ]; then
+              echo "No rendered PDF found in $render_out_dir after rendering profile '$profile'"
               exit 1
             fi
 
-            base_name=$(basename "$latest_pdf" .pdf)
-            mv "$latest_pdf" "$render_out_dir/${base_name}_${profile}.pdf"
+            cp "$new_pdf" "$target_pdf"
             rm -f "$tmp_input"
+            rm -f "$marker_file"
           }
 
           render_profile "english"
