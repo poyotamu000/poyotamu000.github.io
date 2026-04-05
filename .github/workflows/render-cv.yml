@@ -33,6 +33,8 @@ jobs:
       - name: RenderCV (English + Bilingual)
         run: |
           render_out_dir="assets/rendercv/rendercv_output"
+          # Clean stale/template PDFs so only intended outputs remain.
+          rm -f "$render_out_dir"/*_CV.pdf "$render_out_dir"/cv_english.pdf "$render_out_dir"/cv_bilingual.pdf
           rendercv_dir=$(find assets -maxdepth 1 -type d -name "rendercv")
           if [ -z "$rendercv_dir" ]; then
             echo "No RenderCV config directory found!"
@@ -76,6 +78,7 @@ jobs:
 
           render_profile "english"
           render_profile "bilingual"
+          rm -f "$render_out_dir"/*_CV.pdf
           rm assets/rendercv/rendercv_output/*.typ
       - name: Upload rendercv_output as an artifact
         uses: actions/upload-artifact@v4
