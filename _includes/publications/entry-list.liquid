@@ -8,7 +8,7 @@
       {% endif %}
       {% if entry.awarder %}. {{ entry.awarder }}{% endif %}
       {% if entry.date %}. {{ entry.date }}{% endif %}
-      {% if entry.summary %}. {{ entry.summary }}{% endif %}
+      {% if entry.summary %}. {{ entry.summary | markdownify | remove: '<p>' | remove: '</p>' }}{% endif %}
     </li>
   {% endfor %}
 </ol>
