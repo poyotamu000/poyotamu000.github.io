@@ -45,6 +45,11 @@ jobs:
             echo "Missing RenderCV config file!"
             exit 1
           fi
+          design=$(find $rendercv_dir -maxdepth 1 -type f \( -name "design.yaml" -o -name "design.yml" \))
+          if [ -z "$design" ]; then
+            echo "Missing RenderCV design file!"
+            exit 1
+          fi
 
           render_profile () {
             profile="$1"
@@ -61,7 +66,7 @@ jobs:
               exit 1
             fi
 
-            rendercv render "$tmp_input" --settings "$settings"
+            rendercv render "$tmp_input" --settings "$settings" --design "$design"
             new_pdf=$(find "$render_out_dir" -maxdepth 1 -type f -name "*_CV.pdf" -newer "$marker_file" | head -n 1)
             if [ -z "$new_pdf" ]; then
               new_pdf=$(ls -t "$render_out_dir"/*_CV.pdf 2>/dev/null | head -n 1)

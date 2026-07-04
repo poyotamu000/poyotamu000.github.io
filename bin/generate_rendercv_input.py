@@ -31,6 +31,33 @@ ENGLISH_PUBLICATION_GROUP_KEYS = {
     "international_conference",
 }
 
+MONTH_NUMBERS = {
+    "jan": 1,
+    "january": 1,
+    "feb": 2,
+    "february": 2,
+    "mar": 3,
+    "march": 3,
+    "apr": 4,
+    "april": 4,
+    "may": 5,
+    "jun": 6,
+    "june": 6,
+    "jul": 7,
+    "july": 7,
+    "aug": 8,
+    "august": 8,
+    "sep": 9,
+    "sept": 9,
+    "september": 9,
+    "oct": 10,
+    "october": 10,
+    "nov": 11,
+    "november": 11,
+    "dec": 12,
+    "december": 12,
+}
+
 
 def load_yaml(path: Path) -> dict:
     with path.open("r", encoding="utf-8") as f:
@@ -43,6 +70,29 @@ def clean_text(value: str) -> str:
     text = re.sub(r"\s+", " ", text).strip()
     text = text.replace("{", "").replace("}", "")
     return text
+
+
+def normalize_bib_month(value: str) -> int | None:
+    month = clean_text(value).strip().lower().rstrip(".")
+    if not month:
+        return None
+    if month.isdigit():
+        month_num = int(month)
+        return month_num if 1 <= month_num <= 12 else None
+    return MONTH_NUMBERS.get(month)
+
+
+def format_publication_date(year: str, month: str) -> str | int:
+    normalized_year = clean_text(year)
+    if not normalized_year:
+        return ""
+
+    month_num = normalize_bib_month(month)
+    if month_num and re.fullmatch(r"\d{4}", normalized_year):
+        return f"{normalized_year}-{month_num:02d}"
+    if re.fullmatch(r"\d{4}", normalized_year):
+        return int(normalized_year)
+    return normalized_year
 
 
 def parse_bib_strings(content: str) -> dict[str, str]:
@@ -310,6 +360,7 @@ def build_publications_by_group(bib_path: Path, profile: str) -> dict[str, list[
 
         title = resolve_bib_value(extract_field(raw, "title"), string_map)
         year = resolve_bib_value(extract_field(raw, "year"), string_map)
+        month = resolve_bib_value(extract_field(raw, "month"), string_map)
         doi = resolve_bib_value(extract_field(raw, "doi"), string_map)
         url = resolve_bib_value(extract_field(raw, "url"), string_map)
         authors = parse_authors(resolve_bib_value(extract_field(raw, "author"), string_map))
@@ -346,13 +397,13 @@ def build_publications_by_group(bib_path: Path, profile: str) -> dict[str, list[
         if venue_text:
             entry["journal"] = venue_text
         if year:
-            entry["date"] = year
+            entry["date"] = format_publication_date(year, month)
         if doi:
             entry["doi"] = doi if doi.startswith("http") else f"https://doi.org/{doi}"
         elif url:
             entry["url"] = url
 
-        grouped[pubtype].append({"year": year, "entry": entry})
+        grouped[pubtype].append({"year": year, "month": normalize_bib_month(month) or 0, "entry": entry})
 
     grouped_entries: dict[str, list[dict]] = {}
     for key, heading in PUBLICATION_GROUPS:
@@ -360,13 +411,13 @@ def build_publications_by_group(bib_path: Path, profile: str) -> dict[str, list[
             continue
         records = grouped.get(key, [])
 
-        def sort_key(item: dict) -> tuple[int, str]:
+        def sort_key(item: dict) -> tuple[int, int, str]:
             try:
                 title = item.get("entry", {}).get("title", "") if isinstance(item.get("entry"), dict) else ""
-                return (-int(item.get("year", "0") or 0), str(title))
+                return (-int(item.get("year", "0") or 0), -int(item.get("month", 0) or 0), str(title))
             except ValueError:
                 title = item.get("entry", {}).get("title", "") if isinstance(item.get("entry"), dict) else ""
-                return (0, str(title))
+                return (0, 0, str(title))
 
         records.sort(key=sort_key)
         entries = [rec["entry"] for rec in records if isinstance(rec.get("entry"), dict)]

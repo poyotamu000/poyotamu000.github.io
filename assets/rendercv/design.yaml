@@ -1,11 +1,15 @@
 # for more options, see https://docs.rendercv.com/user_guide/yaml_input_structure/design/
 design:
   theme: classic
+  typography:
+    font_family: Noto Sans
+    line_spacing: 0.7em
   page:
     size: a4
     show_footer: false
     show_top_note: false
   sections:
     allow_page_break: true
+    show_time_spans_in: []
   entries:
     allow_page_break: true
