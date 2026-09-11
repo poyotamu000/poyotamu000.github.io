@@ -2,6 +2,10 @@ entries:
   - title: JSPS KAKENHI Grant-in-Aid for Research Activity Start-up (in Japanese, 研究活動スタート支援 (代表))
     awarder: JSPS (Japan Society for the Promotion of Science)
     start_date: 2026-09
+    end_date: 2028-03
+  - title: AI Center Collaborative Research Grant (in Japanese, 2026年度AIセンター融合研究促進費 (代表))
+    awarder: Next Generation Artificial Intelligence Research Center
+    start_date: 2026-10
     end_date: 2027-03
   - title: JSPS Research Fellowship for Young Scientists (DC2) (in Japanese, 日本学術振興会特別研究員（DC2）)
     awarder: JSPS (Japan Society for the Promotion of Science)
