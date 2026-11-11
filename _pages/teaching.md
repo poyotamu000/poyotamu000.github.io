@@ -11,7 +11,8 @@ nav_order: 3
 
 ### 2026
 
-- Instructor (Undergraduate Course), _Architecture of Intelligent Machinery_ (Spring Term), Department of Information Science and Technology (in Japanese 知能機械構成論)
+- Organizer, _Special Lectures on Mechano-Informatics_ (Autumn Term), Department of Information Science and Technology (in Japanese 知能機械情報学特別講義)
+- Instructor, _Architecture of Intelligent Machinery_ (Spring Term), Department of Information Science and Technology (in Japanese 知能機械構成論)
 
 ### 2022
 
